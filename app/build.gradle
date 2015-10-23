@@ -5,8 +5,8 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "me.androidplus.sunkaplus"
-        minSdkVersion 8
+        applicationId "com.george.sungka"
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
