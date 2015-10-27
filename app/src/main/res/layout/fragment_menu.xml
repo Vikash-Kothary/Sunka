@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.teamhawk.sunka.MenuFragment">
+
+    <Button
+        android:id="@+id/singplayer_button"
+        android:text="@string/singlePlayer_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top|center_vertical|center"
+        android:minWidth="250dp" />
+
+    <Button
+        android:id="@+id/localPlay_button"
+        android:text="@string/playLocal_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top|center_vertical|center"
+        android:minWidth="250dp"/>
+
+    <Button
+        android:id="@+id/onlinePlay_button"
+        android:text="@string/playOther_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="250dp"/>
+
+</LinearLayout>

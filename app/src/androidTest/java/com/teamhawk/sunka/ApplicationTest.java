@@ -1,4 +1,4 @@
-package com.george.sungka;
+package com.teamhawk.sunka;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

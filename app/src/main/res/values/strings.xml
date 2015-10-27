@@ -1,10 +1,25 @@
 <resources>
-    <string name="app_name">Sungka</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Sunka</string>
+
     <string name="action_settings">Settings</string>
 
+    <string name="singlePlayer_Button">Single Player</string>
+    <string name="playLocal_Button">Local Multiplayer</string>
+    <string name="playOther_Button">Online Multiplayer</string>
+
+    <string name="player1_Text">Player 1:</string>
+    <string name="typePlayer1_HintText">Type Player 1 Name</string>
+    <string name="player2_Text">Player 2:</string>
+    <string name="typePlayer2_HintText">Type Player 2 Name</string>
+    <string name="confirm_Button">Confirm</string>
+
+    <string name="typeOnline_HintText">Type Your Online Name</string>
+    <string name="submit_button">Submit</string>
+    <string name="title_activity_game__board">Game_Board</string>
+	
     <string name="blank"></string>
     <string name="start">4</string>
     <string name="home_start">0</string>
+
 </resources>

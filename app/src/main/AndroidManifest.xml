@@ -1,21 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.george.sungka" >
+    package="com.teamhawk.sunka" >
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        >
         <activity
-            android:name=".Sungka"
-            android:label="@string/app_name" >
+            android:name="com.teamhawk.sunka.UI.MainActivity"
+            android:screenOrientation="sensorLandscape">
+        </activity>
+
+        <activity
+            android:name="com.teamhawk.sunka.UI.MenuActivity"
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--<activity-->
+            <!--android:name=".Multiplayer_menu"-->
+            <!--android:label="@string/title_activity_multiplayer_menu"-->
+            <!--android:screenOrientation="landscape"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" >-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".Local_player_naming_menu"-->
+            <!--android:label="@string/title_activity_local_player_naming_menu"-->
+            <!--android:screenOrientation="landscape"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" >-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".Online_player_naming_menu"-->
+            <!--android:label="@string/title_activity_online_player_naming_menu"-->
+            <!--android:screenOrientation="landscape"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" >-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".Game_Board"-->
+            <!--android:label="@string/title_activity_game__board"-->
+            <!--android:screenOrientation="landscape"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" >-->
+        <!--</activity>-->
     </application>
 
 </manifest>
