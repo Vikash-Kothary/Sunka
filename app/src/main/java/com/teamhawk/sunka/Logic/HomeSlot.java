@@ -1,13 +1,17 @@
-package com.teamhawk.sunka.Logic;
+package com.teamhawk.sunka.logic;
 
 /**
  * Created by Vikash Kothary on 23-Oct-15.
  */
 public class HomeSlot extends Slot{
 
-    private int ballCt;
+    public HomeSlot(int id) {
+        super(id);
+        setBallCount(0);
+    }
 
-    public HomeSlot() {
-        ballCt = 0;
+    @Override
+    public boolean isHomeSlot() {
+        return true;
     }
 }

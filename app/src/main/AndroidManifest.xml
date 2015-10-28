@@ -9,12 +9,12 @@
         android:theme="@style/AppTheme"
         >
         <activity
-            android:name="com.teamhawk.sunka.UI.MainActivity"
+            android:name="com.teamhawk.sunka.ui.MainActivity"
             android:screenOrientation="sensorLandscape">
         </activity>
 
         <activity
-            android:name="com.teamhawk.sunka.UI.MenuActivity"
+            android:name="com.teamhawk.sunka.ui.MenuActivity"
             android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,30 +23,6 @@
             </intent-filter>
         </activity>
 
-        <!--<activity-->
-            <!--android:name=".Multiplayer_menu"-->
-            <!--android:label="@string/title_activity_multiplayer_menu"-->
-            <!--android:screenOrientation="landscape"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" >-->
-        <!--</activity>-->
-        <!--<activity-->
-            <!--android:name=".Local_player_naming_menu"-->
-            <!--android:label="@string/title_activity_local_player_naming_menu"-->
-            <!--android:screenOrientation="landscape"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" >-->
-        <!--</activity>-->
-        <!--<activity-->
-            <!--android:name=".Online_player_naming_menu"-->
-            <!--android:label="@string/title_activity_online_player_naming_menu"-->
-            <!--android:screenOrientation="landscape"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" >-->
-        <!--</activity>-->
-        <!--<activity-->
-            <!--android:name=".Game_Board"-->
-            <!--android:label="@string/title_activity_game__board"-->
-            <!--android:screenOrientation="landscape"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" >-->
-        <!--</activity>-->
     </application>
 
 </manifest>

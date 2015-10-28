@@ -1,4 +1,4 @@
-package com.teamhawk.sunka.Logic;
+package com.teamhawk.sunka.logic;
 
 /**
  * Created by Vikash Kothary on 27-Oct-15.

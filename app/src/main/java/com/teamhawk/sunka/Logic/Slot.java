@@ -1,4 +1,4 @@
-package com.teamhawk.sunka.Logic;
+package com.teamhawk.sunka.logic;
 
 import android.widget.Button;
 
@@ -11,22 +11,30 @@ public class Slot {
 
     private int id;
     private int ballCt;
+    private Player player;
     private Slot next;
+    private Slot opposite;
 
-    public Slot() {
-        this.id = 0;
+    public Slot(int id) {
+        this.id = id;
         this.ballCt = 7;
-        Slot next = null;
+        this.player = null;
     }
 
     public void Slot(int id, int ballCt, Slot next) {
-        init(id, ballCt, next);
+        init(id, ballCt, next, null);
     }
 
-    public void init(int id, int ballCt, Slot next) {
+    public void Slot(Slot next, Slot opposite) {
+        this.next = next;
+        this.opposite = opposite;
+    }
+
+    public void init(int id, int ballCt, Slot next, Slot opposite) {
         this.id = id;
         this.ballCt = ballCt;
         this.next = next;
+        this.opposite = opposite;
     }
 
     public int getBallCount() {
@@ -49,33 +57,31 @@ public class Slot {
         this.next = next;
     }
 
-    /*
-     * These functions have to be updated as they should not be in the logic classes
-     */
-
-    //Logic for button press
-    public void clicked(HashMap buttons, String idString){
-        System.out.println("clicked");
-
-        updateButton(buttons, idString, "0");
-
-        adjustNext(buttons, ballCt);
-        ballCt = 0;
+    public void setID(int ID) {
+        this.id = ID;
     }
 
-    //Recursive method does all the work
-    public void adjustNext(HashMap buttons, int ballCt1) {
-        if (ballCt1 != 0) {
-            next.incrementBallCount();
-            ballCt1--;
-            next.updateButton(buttons,Integer.toString(next.id), Integer.toString(next.ballCt));
-            next.adjustNext(buttons, ballCt1);
-        }
+    public int getID(){
+        return id;
     }
 
-    //Updates the button GUI text
-    public void updateButton(HashMap buttons, String idString, String val){
-        Button b = (Button) buttons.get(idString);
-        b.setText(val);
+    public void setOpposite(Slot opposite) {
+        this.opposite = opposite;
+    }
+
+    public void resetBallCount(){
+        ballCt=0;
+    }
+
+    public boolean isHomeSlot() {
+        return false;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

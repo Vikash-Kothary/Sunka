@@ -8,7 +8,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/p1_h" />
+        android:id="@+id/p1_h"
+        android:clickable="false"
+        android:focusable="false"/>
 
     <!-- Layout for the 14 cups   -->
     <LinearLayout
@@ -24,61 +26,6 @@
             android:layout_weight="1"
             android:orientation="horizontal"
             android:paddingBottom="50dp">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_6" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_5" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_4" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_3" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_2" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_1" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_0" />
-
-        </LinearLayout>
-
-        <!-- end of the first seven cups -->
-
-        <!-- start of second set of 7 cups -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingTop="50dp">
 
             <Button
                 android:layout_width="match_parent"
@@ -123,6 +70,61 @@
                 android:id="@+id/p2_6" />
 
         </LinearLayout>
+
+        <!-- end of the first seven cups -->
+
+        <!-- start of second set of 7 cups -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingTop="50dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/p1_0" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/p1_1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/p1_2" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/p1_3" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/p1_4" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/p1_5" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/p1_6" />
+
+        </LinearLayout>
         <!-- start of second set of 7 cups -->
 
     </LinearLayout>
@@ -132,6 +134,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/p2_h" />
+        android:id="@+id/p2_h"
+        android:clickable="false"
+        android:focusable="false"/>
 
 </LinearLayout>
