@@ -11,6 +11,8 @@ import android.widget.Button;
 import com.teamhawk.sunka.logic.Game;
 import com.teamhawk.sunka.R;
 
+import static com.teamhawk.sunka.R.id.statistics_button;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -27,11 +29,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         Button btn_singlePlayer = (Button) rootView.findViewById(R.id.singplayer_button);
         Button btn_localPlay = (Button) rootView.findViewById(R.id.localPlay_button);
         Button btn_onlinePlay = (Button) rootView.findViewById(R.id.onlinePlay_button);
+        Button btn_statisticsPlayer = (Button) rootView.findViewById(statistics_button);
 
         btn_singlePlayer.setOnClickListener(this);
         btn_localPlay.setOnClickListener(this);
         btn_onlinePlay.setOnClickListener(this);
-
+        btn_statisticsPlayer.setOnClickListener(this);
         return rootView;
     }
 
@@ -57,6 +60,11 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
             case R.id.onlinePlay_button:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new OnlinePlayerNamingFragment()).addToBackStack(null)
+                        .commit();
+                break;
+            case statistics_button:
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new Statistics()).addToBackStack(null)
                         .commit();
                 break;
         }

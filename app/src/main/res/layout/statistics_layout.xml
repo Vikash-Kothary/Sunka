@@ -1,0 +1,133 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.teamhawk.sunka.UI.Statistics"
+    android:stretchColumns="7"
+    android:showDividers="beginning">
+
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/statistics_Name" android:text="@string/statistics_Name" android:layout_weight="1"
+            android:layout_width="80dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/ranking_Position" android:text="@string/ranking_Position" android:layout_weight="1"
+            android:layout_width="80dp" ></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/won_Times" android:text="@string/won_Times" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/lost_Times" android:text="@string/lost_Times" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/higher_Score" android:text="@string/higher_Score" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/best_Time" android:text="@string/best_Time" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/average_Time" android:text="@string/average_Time" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+    </TableRow>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/statistic_playerName" android:text="@string/statistic_playerName" android:layout_weight="1" android:layout_width="80dp"></TextView>
+
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+    </TableRow>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/statistic_playerName2" android:text="@string/statistic_playerName2" android:layout_weight="1" android:layout_width="80dp"></TextView>
+
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+    </TableRow>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+
+
+
+
+    <!--
+
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>  <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
+        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
+    </TableRow>
+
+-->
+
+
+</TableLayout>

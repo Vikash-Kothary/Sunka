@@ -7,6 +7,7 @@
     <string name="singlePlayer_Button">Single Player</string>
     <string name="playLocal_Button">Local Multiplayer</string>
     <string name="playOther_Button">Online Multiplayer</string>
+    <string name="statistics_Button">Player Statistics</string>
 
     <string name="player1_Text">Player 1:</string>
     <string name="typePlayer1_HintText">Type Player 1 Name</string>
@@ -21,5 +22,17 @@
     <string name="blank"></string>
     <string name="start">4</string>
     <string name="home_start">0</string>
+
+    <string name="statistics_Name">Player Name</string>
+    <string name="ranking_Position">Ranking Position</string>
+    <string name="won_Times">Won</string>
+    <string name="lost_Times">Lost</string>
+    <string name="higher_Score">Higher Score</string>
+    <string name="best_Time">Best Time to Win / min</string>
+    <string name="average_Time">Average Time to Win / min</string>
+    <string name="statistic_playerName"></string>
+    <string name="statistic_playerName2"></string>
+
+
 
 </resources>
