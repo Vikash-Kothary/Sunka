@@ -34,45 +34,47 @@ public class Board extends ArrayList<Slot> {
         this.player1 = player1;
         this.player2 = player2;
 
-        Slot p1_h = new HomeSlot(P1_h);
-        Slot p2_h = new HomeSlot(P2_h);
+        HomeSlot p1_h = new HomeSlot(P1_h);
+        HomeSlot p2_h = new HomeSlot(P2_h);
 
-        Slot p1_1 = new Slot(P1_1);
-        Slot p1_2 = new Slot(P1_2);
-        Slot p1_3 = new Slot(P1_3);
-        Slot p1_4 = new Slot(P1_4);
-        Slot p1_5 = new Slot(P1_5);
-        Slot p1_6 = new Slot(P1_6);
-        Slot p1_7 = new Slot(P1_7);
-        Slot p2_1 = new Slot(P2_1);
-        Slot p2_2 = new Slot(P2_2);
-        Slot p2_3 = new Slot(P2_3);
-        Slot p2_4 = new Slot(P2_4);
-        Slot p2_5 = new Slot(P2_5);
-        Slot p2_6 = new Slot(P2_6);
-        Slot p2_7 = new Slot(P2_7);
+        MainSlot p1_1 = new MainSlot(P1_1);
+        MainSlot p1_2 = new MainSlot(P1_2);
+        MainSlot p1_3 = new MainSlot(P1_3);
+        MainSlot p1_4 = new MainSlot(P1_4);
+        MainSlot p1_5 = new MainSlot(P1_5);
+        MainSlot p1_6 = new MainSlot(P1_6);
+        MainSlot p1_7 = new MainSlot(P1_7);
+        MainSlot p2_1 = new MainSlot(P2_1);
+        MainSlot p2_2 = new MainSlot(P2_2);
+        MainSlot p2_3 = new MainSlot(P2_3);
+        MainSlot p2_4 = new MainSlot(P2_4);
+        MainSlot p2_5 = new MainSlot(P2_5);
+        MainSlot p2_6 = new MainSlot(P2_6);
+        MainSlot p2_7 = new MainSlot(P2_7);
 
         for (int i=0;i<this.size();i++){
             if(i<size()/2)this.get(i).setPlayer(player1);
             else this.get(i).setPlayer(player2);
         }
 
-        p1_h.setNext(p1_1);
-        p1_1.setNext(p1_2);
-        p1_2.setNext(p1_3);
-        p1_3.setNext(p1_4);
-        p1_4.setNext(p1_5);
-        p1_5.setNext(p1_6);
-        p1_6.setNext(p1_7);
-        p1_7.setNext(p2_h);
-        p2_h.setNext(p2_7);
-        p2_7.setNext(p2_6);
-        p2_6.setNext(p2_5);
-        p2_5.setNext(p2_4);
-        p2_4.setNext(p2_3);
-        p2_3.setNext(p2_2);
-        p2_2.setNext(p2_1);
-        p2_1.setNext(p1_h);
+        p1_h.setFriends(p2_1);
+        p2_h.setFriends(p1_1);
+
+        p1_1.setFriends(p1_2, p2_7, p1_h);
+        p1_2.setFriends(p1_3, p2_6, p1_h);
+        p1_3.setFriends(p1_4, p2_5, p1_h);
+        p1_4.setFriends(p1_5, p2_4, p1_h);
+        p1_5.setFriends(p1_6, p2_3, p1_h);
+        p1_6.setFriends(p1_7, p2_2, p1_h);
+        p1_7.setFriends(p1_h, p2_1, p1_h);
+
+        p2_1.setFriends(p2_2, p1_7, p2_h);
+        p2_2.setFriends(p2_3, p1_6, p2_h);
+        p2_3.setFriends(p2_4, p1_5, p2_h);
+        p2_4.setFriends(p2_5, p1_4, p2_h);
+        p2_5.setFriends(p2_6, p1_3, p2_h);
+        p2_6.setFriends(p2_7, p1_2, p2_h);
+        p2_7.setFriends(p2_h, p1_1, p2_h);
 
         add(p1_h);
         add(p1_1);
@@ -113,6 +115,15 @@ public class Board extends ArrayList<Slot> {
 
     public void adjustNext(Slot slot, int ballCt1) {
         if (ballCt1 != 0) {
+            //Steal function
+            if ((ballCt1 == 1) && (slot.getNext().getBallCount() == 0) && !slot.isHomeSlot()){
+                Slot opposite = slot.getNext().getOpposite();
+                Slot home = slot.getHome();
+
+                home.setBallCount(home.getBallCount() + opposite.getBallCount());
+                opposite.setBallCount(0);
+
+            }
             slot.getNext().incrementBallCount();
             ballCt1--;
             this.adjustNext(slot.getNext(), ballCt1);
