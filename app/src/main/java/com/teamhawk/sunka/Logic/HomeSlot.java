@@ -10,6 +10,10 @@ public class HomeSlot extends Slot{
         setBallCount(0);
     }
 
+    public void setFriends(Slot next) {
+        this.next = next;
+    }
+
     @Override
     public boolean isHomeSlot() {
         return true;

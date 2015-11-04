@@ -21,7 +21,7 @@ public class Player {
     }
 
     public boolean equals(Player player){
-        /* What if two people have the same name */
+        /* What if two people have the same name? */
         return this.toString().equals(player.toString());
     }
 
