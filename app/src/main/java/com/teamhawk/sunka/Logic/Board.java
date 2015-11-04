@@ -12,22 +12,24 @@ import java.util.ArrayList;
 public class Board extends ArrayList<Slot> {
 
     public Player player1, player2;
+    private int ballsInPlay;
 
-    public static final int P1_h = 0;
-    public static final int P1_1 = 1;
-    public static final int P1_2 = 2;
-    public static final int P1_3 = 3;
-    public static final int P1_4 = 4;
-    public static final int P1_5 = 5;
-    public static final int P1_6 = 6;
-    public static final int P1_7 = 7;
-    public static final int P2_7 = 8;
-    public static final int P2_6 = 9;
-    public static final int P2_5 = 10;
+    public static final int P1_1 = 0;
+    public static final int P1_2 = 1;
+    public static final int P1_3 = 2;
+    public static final int P1_4 = 3;
+    public static final int P1_5 = 4;
+    public static final int P1_6 = 5;
+    public static final int P1_7 = 6;
+    public static final int P1_h = 7;
+
+    public static final int P2_1 = 8;
+    public static final int P2_2 = 9;
+    public static final int P2_3 = 10;
     public static final int P2_4 = 11;
-    public static final int P2_3 = 12;
-    public static final int P2_2 = 13;
-    public static final int P2_1 = 14;
+    public static final int P2_5 = 12;
+    public static final int P2_6 = 13;
+    public static final int P2_7 = 14;
     public static final int P2_h = 15;
 
     public Board(Player player1, Player player2) {
@@ -91,8 +93,7 @@ public class Board extends ArrayList<Slot> {
         add(p2_4);
         add(p2_3);
         add(p2_2);
-        add(p2_1);
-
+        add(p2_1);;
     }
 
     public void clicked(Slot slot){
@@ -109,14 +110,24 @@ public class Board extends ArrayList<Slot> {
         if (!slot.isHomeSlot()){
             adjustNext(slot, slot.getBallCount());
             slot.resetBallCount();
+
+            if (checkEnd(this.get(1)) == true){
+                int p1Ct = this.get(0).getBallCount();
+                int p2Ct = this.get(8).getBallCount();
+                if (p1Ct > p2Ct) System.out.println("p1 won");
+                else if (p2Ct > p1Ct) System.out.println("p2 won");
+                else System.out.println("tie");
+            }
+            ballsInPlay = 0;
         }
 
     }
 
-    public void adjustNext(Slot slot, int ballCt1) {
+    private void adjustNext(Slot slot, int ballCt1) {
         if (ballCt1 != 0) {
             //Steal function
-            if ((ballCt1 == 1) && (slot.getNext().getBallCount() == 0) && !slot.isHomeSlot()){
+            if ((ballCt1 == 1) && (slot.getNext().getBallCount() == 0)
+                    && !slot.isHomeSlot() && !slot.getNext().isHomeSlot()){
                 Slot opposite = slot.getNext().getOpposite();
                 Slot home = slot.getHome();
 
@@ -128,6 +139,16 @@ public class Board extends ArrayList<Slot> {
             ballCt1--;
             this.adjustNext(slot.getNext(), ballCt1);
         }
+    }
+
+    private boolean checkEnd(Slot slot){
+//        System.out.println(Integer.toString(slot.getId()));
+        if (slot.getId() != 15) {
+            if (!slot.isHomeSlot()) ballsInPlay += slot.getBallCount();
+            checkEnd(slot.getNext());
+        }
+        if (ballsInPlay == 0) return true;
+        return false;
     }
 
     public Slot[] getSlots(){

@@ -56,4 +56,8 @@ public class Slot {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    public int getId() {
+        return id;
+    }
 }
