@@ -9,23 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5f46957-55d5-454c-9857-d6bbdbec6c3d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sunka.iml" afterPath="$PROJECT_DIR$/Sunka.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_23_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="f5f46957-55d5-454c-9857-d6bbdbec6c3d" name="Default" comment="Requirement 4 finished, lots of bugs fixed, logic pretty much finished.&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sunka.iws" />
@@ -53,64 +37,10 @@
     <favorites_list name="sunka" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/logic/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <marker date="1446828430643" expanded="true" signature="951:3012" placeholder="{...}" />
-                <marker date="1446828430643" expanded="true" signature="3067:3389" placeholder="{...}" />
-                <marker date="1446828430643" expanded="true" signature="3488:4798" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/logic/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.04644809">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding>
-                <element signature="e#1395#1396#0" expanded="true" />
-                <element signature="e#1423#1424#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Slot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/logic/Slot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#446#447#0" expanded="false" />
-                <element signature="e#475#476#0" expanded="false" />
-                <element signature="e#519#520#0" expanded="false" />
-                <element signature="e#555#556#0" expanded="false" />
-                <element signature="e#446#447#0" expanded="false" />
-                <element signature="e#475#476#0" expanded="false" />
-                <element signature="e#519#520#0" expanded="false" />
-                <element signature="e#555#556#0" expanded="false" />
-                <element signature="e#917#918#0" expanded="false" />
-                <element signature="e#1110#1111#0" expanded="false" />
-                <marker date="1446828318212" expanded="false" signature="888:899" placeholder=" { " />
-                <marker date="1446828318212" expanded="true" signature="960:971" placeholder=" { " />
-                <marker date="1446828318212" expanded="true" signature="1022:1033" placeholder=" { " />
-                <marker date="1446828318212" expanded="false" signature="1080:1091" placeholder=" { " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -1888,6 +1818,13 @@
       <option name="number" value="Default" />
       <updated>1446265759149</updated>
     </task>
+    <task id="LOCAL-00001" summary="Requirement 4 finished, lots of bugs fixed, logic pretty much finished.&#10;">
+      <created>1446829955169</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1446829955169</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1937,8 +1874,14 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Minor update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor update" />
+    <MESSAGE value="Requirement 4 finished, lots of bugs fixed, logic pretty much finished.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Requirement 4 finished, lots of bugs fixed, logic pretty much finished.&#10;" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1977,10 +1920,10 @@
             <element signature="e#555#556#0" expanded="false" />
             <element signature="e#917#918#0" expanded="false" />
             <element signature="e#1110#1111#0" expanded="false" />
-            <marker date="1446828318212" expanded="false" signature="888:899" placeholder=" { " />
-            <marker date="1446828318212" expanded="true" signature="960:971" placeholder=" { " />
-            <marker date="1446828318212" expanded="true" signature="1022:1033" placeholder=" { " />
-            <marker date="1446828318212" expanded="false" signature="1080:1091" placeholder=" { " />
+            <marker date="1446828318212" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1446828318212" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1446828318212" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1446828318212" expanded="false" signature="-1:-1" placeholder=" { " />
           </folding>
         </state>
       </provider>
@@ -1999,9 +1942,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <marker date="1446828430643" expanded="true" signature="951:3012" placeholder="{...}" />
-            <marker date="1446828430643" expanded="true" signature="3067:3389" placeholder="{...}" />
-            <marker date="1446828430643" expanded="true" signature="3488:4798" placeholder="{...}" />
+            <marker date="1446830035593" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1446830035593" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1446830035593" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -2197,16 +2140,27 @@
           <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="false" />
-            <marker date="1446828430643" expanded="true" signature="951:3012" placeholder="{...}" />
-            <marker date="1446828430643" expanded="true" signature="3067:3389" placeholder="{...}" />
-            <marker date="1446828430643" expanded="true" signature="3488:4798" placeholder="{...}" />
+            <marker date="1446830035593" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1446830035593" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1446830035593" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/logic/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04644809">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1423#1424#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/logic/Slot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.60382515">
           <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -2220,21 +2174,10 @@
             <element signature="e#555#556#0" expanded="false" />
             <element signature="e#917#918#0" expanded="false" />
             <element signature="e#1110#1111#0" expanded="false" />
-            <marker date="1446828318212" expanded="false" signature="888:899" placeholder=" { " />
-            <marker date="1446828318212" expanded="true" signature="960:971" placeholder=" { " />
-            <marker date="1446828318212" expanded="true" signature="1022:1033" placeholder=" { " />
-            <marker date="1446828318212" expanded="false" signature="1080:1091" placeholder=" { " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/logic/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04644809">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="e#1395#1396#0" expanded="true" />
-            <element signature="e#1423#1424#0" expanded="true" />
+            <marker date="1446828318212" expanded="false" signature="-1:-1" placeholder=" { " />
+            <marker date="1446828318212" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1446828318212" expanded="true" signature="-1:-1" placeholder=" { " />
+            <marker date="1446828318212" expanded="false" signature="-1:-1" placeholder=" { " />
           </folding>
         </state>
       </provider>
