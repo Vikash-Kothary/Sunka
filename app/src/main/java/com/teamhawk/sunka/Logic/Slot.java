@@ -16,9 +16,9 @@ public class Slot {
     protected Slot opposite;
     protected Slot home;
 
-    public Slot(int id) {
+    public Slot(int id, Player player) {
         this.id = id;
-        this.player = null;
+        this.player = player;
     }
 
     public int getBallCount() {
@@ -55,5 +55,13 @@ public class Slot {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 }

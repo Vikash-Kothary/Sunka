@@ -5,8 +5,8 @@ package com.teamhawk.sunka.logic;
  */
 public class MainSlot extends Slot{
 
-    public MainSlot(int id) {
-        super(id);
+    public MainSlot(int id, Player player) {
+        super(id, player);
         setBallCount(7);
     }
 
