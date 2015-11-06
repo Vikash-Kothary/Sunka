@@ -1,10 +1,11 @@
 package com.teamhawk.sunka.logic;
 
+import java.util.Random;
+
 /**
  * Created by Vikash Kothary on 23-Oct-15.
  */
 public class Game {
-    /* May be redundant. Considering combining with board clase */
 
     public final static String PLAYER1 = "com.teamhawk.sunka.PLAYER1";
     public final static String PLAYER2 = "com.teamhawk.sunka.PLAYER2";
@@ -15,12 +16,17 @@ public class Game {
     private boolean turn;
     private boolean anotherTurn;
 
-    public Game(Board board, Player player1, Player player2){
-        this.board = board;
-        this.player1 = player1;
-        this.player2 = player2;
-        init();
-    }
+    private int ballsInPlay;
+    private int player1Balls;
+    private int player2Balls;
+
+    //Not used
+//    public Game(Board board, Player player1, Player player2){
+//        this.board = board;
+//        this.player1 = player1;
+//        this.player2 = player2;
+//        init();
+//    }
 
     public Game(Board board) {
         this.board = board;
@@ -31,17 +37,26 @@ public class Game {
 
     private void init(){
         // random player start
-        turn = Math.random()%2==0;
+        turn = Math.random() < 0.5;
+
         anotherTurn=false;
+        System.out.println(turn);
     }
 
+    //Player one is true
     private Player getTurnPlayer(){
-        if(turn) return player2;
-        return player1;
+        if(turn) return player1;
+        return player2;
     }
 
-    private void nextTurn(){
-        if(!anotherTurn) turn = !turn;
+    private void nextTurn() {
+        if (!anotherTurn) turn = !turn;
+
+        if (player1Balls == 0) {
+            turn = false;
+        } else if (player2Balls == 0) {
+            turn = true;
+        }
     }
 
     public Board getBoard() {
@@ -49,11 +64,48 @@ public class Game {
     }
 
     public void turn(Slot slot){
-//        if (slot.getPlayer().equals(getTurnPlayer())){
-            board.clicked(slot);
+        Player inTurn = getTurnPlayer();
+
+        //Comment out 'slot.getPlayer().equals(inTurn) && ' to skip the turn enforcement
+        if (slot.getPlayer().equals(inTurn) && !slot.isHomeSlot() && (slot.getBallCount() != 0)){
+
+            //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
+
+            //Make the turn
+            anotherTurn = board.clicked(slot, inTurn);
+
+            //Reset the ball counts for the next bit
+            ballsInPlay = 0;
+            player1Balls = 0;
+            player2Balls = 0;
+
+            //If there are no balls in play determine the winner
+            if (checkBalls(board.get(1)) == true) {
+                int p1Ct = board.get(0).getBallCount();
+                int p2Ct = board.get(8).getBallCount();
+                if (p1Ct > p2Ct) System.out.println("p1 won"); //Do stuff here for P1 win
+                else if (p2Ct > p1Ct) System.out.println("p2 won"); //Do stuff here for P2 win
+                else System.out.println("tie"); //DO stuff here for tie
+            }
+            //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
+
+            //Update who's next
             nextTurn();
-//        }
+        }
     }
 
-
+    //Check the status of the balls in the game
+    private boolean checkBalls(Slot slot){
+        int ID = slot.getId();
+        if (ID != 15) {
+            int ballsToAdd = slot.getBallCount();
+            if (!slot.isHomeSlot()) ballsInPlay += ballsToAdd;
+            if (ID < 7) player1Balls += ballsToAdd;
+            if (ID > 7 && ID < 15) player2Balls += ballsToAdd;
+            checkBalls(slot.getNext());
+        }
+        //Return true if there are no balls left in play
+        if (ballsInPlay == 0) return true;
+        return false;
+    }
 }
