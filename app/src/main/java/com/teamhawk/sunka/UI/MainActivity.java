@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Not used
     //Registers when a button is clicked 'changed'
 //    public void clicked(View view){
 //

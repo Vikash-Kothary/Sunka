@@ -7,12 +7,12 @@ import com.teamhawk.sunka.ui.MainActivity;
 import java.util.ArrayList;
 
 /**
- * Testing a potential board layout
+ * The board layout
  */
 public class Board extends ArrayList<Slot> {
 
-    public Player player1, player2;
-    private int ballsInPlay;
+    public Player player1, player2, inTurn;
+    private boolean anotherTurn;
 
     public static final int P1_1 = 0;
     public static final int P1_2 = 1;
@@ -36,23 +36,23 @@ public class Board extends ArrayList<Slot> {
         this.player1 = player1;
         this.player2 = player2;
 
-        HomeSlot p1_h = new HomeSlot(P1_h);
-        HomeSlot p2_h = new HomeSlot(P2_h);
+        HomeSlot p1_h = new HomeSlot(P1_h, player1);
+        HomeSlot p2_h = new HomeSlot(P2_h, player2);
 
-        MainSlot p1_1 = new MainSlot(P1_1);
-        MainSlot p1_2 = new MainSlot(P1_2);
-        MainSlot p1_3 = new MainSlot(P1_3);
-        MainSlot p1_4 = new MainSlot(P1_4);
-        MainSlot p1_5 = new MainSlot(P1_5);
-        MainSlot p1_6 = new MainSlot(P1_6);
-        MainSlot p1_7 = new MainSlot(P1_7);
-        MainSlot p2_1 = new MainSlot(P2_1);
-        MainSlot p2_2 = new MainSlot(P2_2);
-        MainSlot p2_3 = new MainSlot(P2_3);
-        MainSlot p2_4 = new MainSlot(P2_4);
-        MainSlot p2_5 = new MainSlot(P2_5);
-        MainSlot p2_6 = new MainSlot(P2_6);
-        MainSlot p2_7 = new MainSlot(P2_7);
+        MainSlot p1_1 = new MainSlot(P1_1, player1);
+        MainSlot p1_2 = new MainSlot(P1_2, player1);
+        MainSlot p1_3 = new MainSlot(P1_3, player1);
+        MainSlot p1_4 = new MainSlot(P1_4, player1);
+        MainSlot p1_5 = new MainSlot(P1_5, player1);
+        MainSlot p1_6 = new MainSlot(P1_6, player1);
+        MainSlot p1_7 = new MainSlot(P1_7, player1);
+        MainSlot p2_1 = new MainSlot(P2_1, player2);
+        MainSlot p2_2 = new MainSlot(P2_2, player2);
+        MainSlot p2_3 = new MainSlot(P2_3, player2);
+        MainSlot p2_4 = new MainSlot(P2_4, player2);
+        MainSlot p2_5 = new MainSlot(P2_5, player2);
+        MainSlot p2_6 = new MainSlot(P2_6, player2);
+        MainSlot p2_7 = new MainSlot(P2_7, player2);
 
         for (int i=0;i<this.size();i++){
             if(i<size()/2)this.get(i).setPlayer(player1);
@@ -96,59 +96,54 @@ public class Board extends ArrayList<Slot> {
         add(p2_1);;
     }
 
-    public void clicked(Slot slot){
-        /*
-        An idea I had
+    public boolean clicked(Slot slot, Player player) {
+        inTurn = player;
 
-        for(int i=0; i<slot.getBallCount();i++){
-            slot.getNext().incrementBallCount();
-            slot = slot.getNext();
-        }
+        //Reset the another turn variable
+        anotherTurn = false;
+        //Initiate the ball adjustments
+        adjustNext(slot, slot.getBallCount());
+        //All balls in the initial slot for this turn have been used up
         slot.resetBallCount();
-
-        */
-        if (!slot.isHomeSlot()){
-            adjustNext(slot, slot.getBallCount());
-            slot.resetBallCount();
-
-            if (checkEnd(this.get(1)) == true){
-                int p1Ct = this.get(0).getBallCount();
-                int p2Ct = this.get(8).getBallCount();
-                if (p1Ct > p2Ct) System.out.println("p1 won");
-                else if (p2Ct > p1Ct) System.out.println("p2 won");
-                else System.out.println("tie");
-            }
-            ballsInPlay = 0;
-        }
-
+        return anotherTurn;
     }
 
-    private void adjustNext(Slot slot, int ballCt1) {
-        if (ballCt1 != 0) {
+    //Recursive method, does most of the work
+    private void adjustNext(Slot slot, int ballCt) {
+        //Define slot once to reduce method calls
+        Slot next = slot.getNext();
+
+
+        if (ballCt != 0) {
             //Steal function
-            if ((ballCt1 == 1) && (slot.getNext().getBallCount() == 0)
-                    && !slot.isHomeSlot() && !slot.getNext().isHomeSlot()){
-                Slot opposite = slot.getNext().getOpposite();
+            if ((ballCt == 1) && (next.getBallCount() == 0 && next.getOpposite().getBallCount() != 0
+                    && !slot.isHomeSlot() && !next.isHomeSlot())){
+                //Define slots once to reduce method calls
                 Slot home = slot.getHome();
+                Slot opposite = next.getOpposite();
 
-                home.setBallCount(home.getBallCount() + opposite.getBallCount());
+                home.setBallCount(home.getBallCount() + opposite.getBallCount() + 1);
                 opposite.setBallCount(0);
+            } else {
 
+                //Check if slot is opponent's home, if so skip it
+                if ((next.isHomeSlot()) && (next.getPlayer() != inTurn)){
+                    next.getNext().incrementBallCount();
+                    ballCt --;
+                    this.adjustNext(next.getNext(), ballCt);
+
+                } else {
+
+                    //Check for another turn
+                    if (ballCt == 1 && next.isHomeSlot() == true) {
+                        anotherTurn = true;
+                    }
+                    slot.getNext().incrementBallCount();
+                    ballCt--;
+                    this.adjustNext(slot.getNext(), ballCt);
+                }
             }
-            slot.getNext().incrementBallCount();
-            ballCt1--;
-            this.adjustNext(slot.getNext(), ballCt1);
         }
-    }
-
-    private boolean checkEnd(Slot slot){
-//        System.out.println(Integer.toString(slot.getId()));
-        if (slot.getId() != 15) {
-            if (!slot.isHomeSlot()) ballsInPlay += slot.getBallCount();
-            checkEnd(slot.getNext());
-        }
-        if (ballsInPlay == 0) return true;
-        return false;
     }
 
     public Slot[] getSlots(){

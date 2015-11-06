@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="D:\User Files\George\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="D:\User Files\George\Documents\sunka\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-4606c7d15f3e7fb16f1f6366256bbf2bbf25f7b5.jar" />
-    </item>
-    <item
-        jar="D:\User Files\George\Documents\sunka\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
+        jar="D:\Documents\AndroidStudioProjects\Sunka\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\libs\internal_impl-23.0.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="D:\User Files\George\Documents\sunka\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-d52322e80f92acdadbc932d164f15e215f131c82.jar" />
+        <dex dex="D:\Documents\AndroidStudioProjects\Sunka\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.1-0830a10b8ba828dc77a29086baac1078bf4899c6.jar" />
     </item>
     <item
-        jar="D:\User Files\George\Documents\sunka\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
+        jar="D:\Documents\AndroidStudioProjects\Sunka\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="D:\User Files\George\Documents\sunka\app\build\intermediates\pre-dexed\debug\classes-833687ec8ddfc5c72a2d0fa16104f469f9cfed6e.jar" />
+        <dex dex="D:\Documents\AndroidStudioProjects\Sunka\app\build\intermediates\pre-dexed\debug\classes-24962a711966aeb136d6b5aeb23d9241641693bf.jar" />
     </item>
     <item
-        jar="D:\User Files\George\Documents\sunka\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.1\support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="D:\Documents\AndroidStudioProjects\Sunka\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.1-6caa1fe4da30cf2cc1676a54cb9890359b7ae5e4.jar" />
+    </item>
+    <item
+        jar="D:\Documents\AndroidStudioProjects\Sunka\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="D:\User Files\George\Documents\sunka\app\build\intermediates\pre-dexed\debug\classes-3f277ab9167dc10b80e5a7660010d1d2a46eac72.jar" />
+        <dex dex="D:\Documents\AndroidStudioProjects\Sunka\app\build\intermediates\pre-dexed\debug\classes-5d95af4e41bf247f1b68b3975752e0c9b72ad3c6.jar" />
     </item>
 
 </items>
