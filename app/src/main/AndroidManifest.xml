@@ -6,16 +6,16 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         >
         <activity
             android:name="com.teamhawk.sunka.ui.MainActivity"
-            android:screenOrientation="sensorLandscape">
+            android:screenOrientation="landscape">
         </activity>
 
         <activity
             android:name="com.teamhawk.sunka.ui.MenuActivity"
-            android:screenOrientation="sensorLandscape">
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

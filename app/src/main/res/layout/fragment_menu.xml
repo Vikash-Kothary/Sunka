@@ -1,39 +1,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/palm_t1x">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_gravity="top|right"
+        >
+        <Button
+            android:id="@+id/statistics_button"
+            android:background="@drawable/group1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+
+            />
+    </LinearLayout>
+
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.teamhawk.sunka.MenuFragment">
+    android:layout_gravity="center">
 
     <Button
         android:id="@+id/singplayer_button"
-        android:text="@string/singlePlayer_Button"
+        android:background="@drawable/singleplayer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="top|center_vertical|center"
-        android:minWidth="250dp" />
+        android:minWidth="250dp"
+        android:layout_gravity="center"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/localPlay_button"
-        android:text="@string/playLocal_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="top|center_vertical|center"
-        android:minWidth="250dp"/>
+        android:background="@drawable/local_multiplayer1x"
+        android:minWidth="250dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/onlinePlay_button"
-        android:text="@string/playOther_Button"
         android:layout_width="wrap_content"
+        android:background="@drawable/online_multiplayer1x"
         android:layout_height="wrap_content"
-        android:minWidth="250dp"/>
-    <Button
-        android:id="@+id/statistics_button"
-        android:text="@string/statistics_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:minWidth="250dp"/>
+        android:minWidth="250dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
+
 
 </LinearLayout>

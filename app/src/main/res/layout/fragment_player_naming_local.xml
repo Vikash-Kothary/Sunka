@@ -4,17 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/background_choosename1"
     tools:context="com.teamhawk.sunka.OnlinePlayerNamingFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|center_horizontal">
 
         <TextView
             android:id="@+id/player1_Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:gravity="center"
             android:text="@string/player1_Text"
             android:textColor="#000000"
@@ -22,7 +26,7 @@
 
         <EditText
             android:id="@+id/player1Name_Edit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/typePlayer1_HintText" />
 
@@ -31,7 +35,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|center_horizontal">
 
         <TextView
             android:id="@+id/player2_Text"
@@ -44,7 +50,7 @@
 
         <EditText
             android:id="@+id/player2Name_Edit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/typePlayer2_HintText" />
 
@@ -53,7 +59,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|center_horizontal">
 
         //TODO: replace button with submit from fragment_player_naming_online.xml
         <Button
@@ -61,7 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/confirm_Button"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:gravity="center_vertical|center_horizontal" />
 
     </LinearLayout>
 
