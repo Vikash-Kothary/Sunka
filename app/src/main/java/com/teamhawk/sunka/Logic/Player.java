@@ -25,6 +25,14 @@ public class Player {
         return this.toString().equals(player.toString());
     }
 
+    public boolean isAI(){
+        return false;
+    }
+
+    public void takeTurn (Game game){
+
+    }
+
     public String toString(){
         return playerName;
     }

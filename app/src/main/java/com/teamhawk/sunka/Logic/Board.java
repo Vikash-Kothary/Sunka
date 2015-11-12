@@ -78,6 +78,7 @@ public class Board extends ArrayList<Slot> {
         p2_6.setFriends(p2_7, p1_2, p2_h);
         p2_7.setFriends(p2_h, p1_1, p2_h);
 
+        //Add the slots to the board array list, the numbers are for AI reference
         add(p1_h);
         add(p1_1);
         add(p1_2);
@@ -87,13 +88,13 @@ public class Board extends ArrayList<Slot> {
         add(p1_6);
         add(p1_7);
         add(p2_h);
-        add(p2_7);
-        add(p2_6);
-        add(p2_5);
-        add(p2_4);
-        add(p2_3);
-        add(p2_2);
-        add(p2_1);;
+        add(p2_7);  //9
+        add(p2_6);  //10
+        add(p2_5);  //11
+        add(p2_4);  //12
+        add(p2_3);  //13
+        add(p2_2);  //14
+        add(p2_1);; //15
     }
 
     public boolean clicked(Slot slot, Player player) {
@@ -116,8 +117,8 @@ public class Board extends ArrayList<Slot> {
 
         if (ballCt != 0) {
             //Steal function
-            if ((ballCt == 1) && (next.getBallCount() == 0 && next.getOpposite().getBallCount() != 0
-                    && !slot.isHomeSlot() && !next.isHomeSlot())){
+            if ((ballCt == 1) && (!slot.isHomeSlot() && !next.isHomeSlot() &&
+                    next.getBallCount() == 0 && next.getOpposite().getBallCount() != 0)){
                 //Define slots once to reduce method calls
                 Slot home = slot.getHome();
                 Slot opposite = next.getOpposite();

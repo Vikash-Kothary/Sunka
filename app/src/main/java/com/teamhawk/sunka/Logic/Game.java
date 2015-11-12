@@ -36,8 +36,12 @@ public class Game {
     }
 
     private void init(){
-        // random player start
-        turn = Math.random() < 0.5;
+        //Random player start unless there is an AI, in which case give priority to the human
+        if (player2.isAI()){
+            turn = true;
+        } else {
+            turn = Math.random() < 0.5;
+        }
 
         anotherTurn=false;
         System.out.println(turn);
@@ -50,12 +54,19 @@ public class Game {
     }
 
     private void nextTurn() {
+
+        //If there is an AI in the game then it shall take it's turn the reset for the human
         if (!anotherTurn) turn = !turn;
 
         if (player1Balls == 0) {
             turn = false;
         } else if (player2Balls == 0) {
             turn = true;
+        }
+
+        if (turn == false && player2.isAI()){
+            player2.takeTurn(this);
+            //turn = true;
         }
     }
 
@@ -86,6 +97,14 @@ public class Game {
                 if (p1Ct > p2Ct) System.out.println("p1 won"); //Do stuff here for P1 win
                 else if (p2Ct > p1Ct) System.out.println("p2 won"); //Do stuff here for P2 win
                 else System.out.println("tie"); //DO stuff here for tie
+
+                //Game is over, create delay then exit
+                try {
+                    Thread.sleep(10000); //1000 milliseconds is one second.
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+                System.exit(0);
             }
             //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
 
