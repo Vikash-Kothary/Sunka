@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.teamhawk.sunka.UI.Statistics"
+    tools:context="com.teamhawk.sunka.ui.StatisticsActivity"
     android:stretchColumns="7"
     android:showDividers="beginning">
 
@@ -20,32 +20,39 @@
             android:layout_height="match_parent" android:background="#000000"/>
 
         <TextView android:id="@+id/statistics_Name" android:text="@string/statistics_Name" android:layout_weight="1"
-            android:layout_width="80dp"></TextView>
+            android:layout_width="80dp"
+            android:textStyle="bold"></TextView>
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
         <TextView android:id="@+id/ranking_Position" android:text="@string/ranking_Position" android:layout_weight="1"
-            android:layout_width="80dp" ></TextView>
+            android:layout_width="80dp"
+            android:textStyle="bold"></TextView>
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
-        <TextView android:id="@+id/won_Times" android:text="@string/won_Times" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <TextView android:id="@+id/won_Times" android:text="@string/won_Times" android:layout_weight="1" android:layout_width="40dp"
+            android:textStyle="bold"></TextView>
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
-        <TextView android:id="@+id/lost_Times" android:text="@string/lost_Times" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <TextView android:id="@+id/lost_Times" android:text="@string/lost_Times" android:layout_weight="1" android:layout_width="40dp"
+            android:textStyle="bold"></TextView>
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
-        <TextView android:id="@+id/higher_Score" android:text="@string/higher_Score" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <TextView android:id="@+id/higher_Score" android:text="@string/higher_Score" android:layout_weight="1" android:layout_width="100dp"
+            android:textStyle="bold"></TextView>
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
-        <TextView android:id="@+id/best_Time" android:text="@string/best_Time" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <TextView android:id="@+id/time_Move" android:text="@string/time_Move" android:layout_weight="1" android:layout_width="100dp"
+            android:textStyle="bold"></TextView>
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
-        <TextView android:id="@+id/average_Time" android:text="@string/average_Time" android:layout_weight="1" android:layout_width="80dp"></TextView>
+        <TextView android:id="@+id/average_Time" android:text="@string/average_Time" android:layout_weight="1" android:layout_width="100dp"
+            android:textStyle="bold"></TextView>
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
@@ -67,9 +74,36 @@
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
+        <TextView android:id="@+id/first_RankingSlot" android:text="@string/first_RankingSlot" android:layout_weight="1"
+            android:layout_width="80dp" ></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/first_WinSlot" android:text="@string/first_WinSlot" android:layout_weight="1" android:layout_width="40dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/first_LoseSlot" android:text="@string/first_LoseSlot" android:layout_weight="1" android:layout_width="40dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/first_HsSlot" android:text="@string/first_HsSlot" android:layout_weight="1" android:layout_width="100dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/first_timeMakeMove" android:text="@string/first_timeMakeMove" android:layout_weight="1" android:layout_width="100dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/first_timeWSlot" android:text="@string/first_timeWSlot" android:layout_weight="1" android:layout_width="100dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+
     </TableRow>
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp" android:background="#000000"/>
+
+
+
     <View android:layout_width="match_parent"
         android:layout_height="1dp" android:background="#000000"/>
 
@@ -87,47 +121,35 @@
         <View android:layout_width="1dp"
             android:layout_height="match_parent" android:background="#000000"/>
 
+        <TextView android:id="@+id/second_RankingSlot" android:text="@string/second_RankingSlot" android:layout_weight="1"
+            android:layout_width="80dp" ></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/second_WinSlot" android:text="@string/second_WinSlot" android:layout_weight="1" android:layout_width="40dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/second_LoseSlot" android:text="@string/second_LoseSlot" android:layout_weight="1" android:layout_width="40dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/second_HsSlot" android:text="@string/second_HsSlot" android:layout_weight="1" android:layout_width="100dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/second_timeMakeMove" android:text="@string/second_timeMakeMove" android:layout_weight="1" android:layout_width="100dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView android:id="@+id/second_timeWSlot" android:text="@string/second_timeWSlot" android:layout_weight="1" android:layout_width="100dp"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>.
+
     </TableRow>
     <View android:layout_width="match_parent"
         android:layout_height="1dp" android:background="#000000"/>
 
-
-
-
-    <!--
-
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp" android:background="#000000"/>  <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test1" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test2" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
-        <TextView android:text="@string/test3" android:layout_weight="1"></TextView>
-    </TableRow>
-
--->
 
 
 </TableLayout>

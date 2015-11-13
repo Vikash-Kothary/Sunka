@@ -5,9 +5,13 @@ package com.teamhawk.sunka.logic;
  */
 public class HomeSlot extends Slot{
 
-    public HomeSlot(int id) {
-        super(id);
+    public HomeSlot(int id, Player player) {
+        super(id, player);
         setBallCount(0);
+    }
+
+    public void setFriends(Slot next) {
+        this.next = next;
     }
 
     @Override

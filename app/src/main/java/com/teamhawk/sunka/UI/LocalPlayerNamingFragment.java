@@ -22,13 +22,7 @@ public class LocalPlayerNamingFragment extends Fragment implements View.OnClickL
 
     private String name;
     private String name2;
-    public String getName2() {
-        return name2;
-    }
 
-    public String getName() {
-        return name;
-    }
 
     public LocalPlayerNamingFragment() {
     }
@@ -58,10 +52,13 @@ public class LocalPlayerNamingFragment extends Fragment implements View.OnClickL
                 name = editText_name1.getText().toString();
                 intent_singlep.putExtra(Game.PLAYER1, name);
 
+
                 name2 = editText_name2.getText().toString();
                 intent_singlep.putExtra(Game.PLAYER2, name2);
 
+
                 startActivity(intent_singlep);
+
                 break;
         }
     }

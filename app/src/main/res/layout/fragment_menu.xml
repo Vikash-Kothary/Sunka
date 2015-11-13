@@ -28,12 +28,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="250dp"/>
-    <Button
-        android:id="@+id/statistics_button"
-        android:text="@string/statistics_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:minWidth="250dp"/>
 
 </LinearLayout>

@@ -28,11 +28,32 @@
     <string name="won_Times">Won</string>
     <string name="lost_Times">Lost</string>
     <string name="higher_Score">Higher Score</string>
-    <string name="best_Time">Best Time to Win / min</string>
+    <string name="time_Move">Average Time to make a move/sec</string>
     <string name="average_Time">Average Time to Win / min</string>
+
+
     <string name="statistic_playerName"></string>
     <string name="statistic_playerName2"></string>
+    <string name="first_WinSlot"></string>
+    <string name="second_WinSlot"></string>
+    <string name="first_LoseSlot"></string>
+    <string name="second_LoseSlot"></string>
+    <string name="first_HsSlot"></string>
+    <string name="second_HsSlot"></string>
+    <string name="first_RankingSlot"></string>
+    <string name="second_RankingSlot"></string>
+    <string name="first_timeWSlot"></string>
+    <string name="second_timeWSlot"></string>
+    <string name="first_timeMakeMove"></string>
+    <string name="second_timeMakeMove"></string>
 
+
+
+    <string name="Options">Options</string>
+    <string name="dialog_Winner"></string>
+    <string name="rematch_Option">Rematch</string>
+    <string name="statistics_Option">Statistics</string>
+    <string name="exit_Option">Exit</string>
 
 
 </resources>

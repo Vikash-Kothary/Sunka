@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:background="#c4d623">
+
+
+
+
+
+
+        <TextView android:text="@string/dialog_Winner" android:id="@+id/dialog_Winner"
+            android:layout_width="fill_parent" android:layout_height="70dp" android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="#1d4adf" />
+
+
+    <Button android:id="@+id/rematch_Option" android:layout_width="fill_parent" android:layout_height="60dp"
+        android:text="@string/rematch_Option" android:layout_below="@id/dialog_Winner"
+        android:textStyle="bold|italic"
+        android:textSize="35dp" />
+
+    <Button android:id="@+id/exit_Option" android:layout_width="fill_parent" android:layout_height="60dp"
+        android:text="@string/exit_Option" android:layout_centerHorizontal="true" android:layout_below="@id/rematch_Option"
+        android:textSize="35dp"
+        android:textStyle="bold|italic" />
+    <Button android:id="@+id/statistics_Option" android:layout_width="fill_parent" android:layout_height="60dp"
+        android:text="@string/statistics_Option" android:layout_below="@id/exit_Option"
+        android:textSize="35dp"
+        android:textStyle="bold|italic" />
+
+</RelativeLayout>
