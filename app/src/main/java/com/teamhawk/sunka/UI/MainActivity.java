@@ -2,8 +2,12 @@ package com.teamhawk.sunka.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.teamhawk.sunka.logic.AIPlayer;
@@ -21,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private Board slots;
     private Game game;
     private HashMap<Button, Slot> buttonToSlot;
+    private static ImageButton[] buttons = new ImageButton[16];
+    public static ImageView imageCoin;
 
 
     @Override
@@ -28,14 +34,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final ImageButton[] buttons = {
+                (ImageButton) findViewById(R.id.p1_h),
+                (ImageButton) findViewById(R.id.p1_0),
+                (ImageButton) findViewById(R.id.p1_1),
+                (ImageButton) findViewById(R.id.p1_2),
+                (ImageButton) findViewById(R.id.p1_3),
+                (ImageButton) findViewById(R.id.p1_4),
+                (ImageButton) findViewById(R.id.p1_5),
+                (ImageButton) findViewById(R.id.p1_6),
+                (ImageButton) findViewById(R.id.p2_h),
+                (ImageButton) findViewById(R.id.p2_6),
+                (ImageButton) findViewById(R.id.p2_5),
+                (ImageButton) findViewById(R.id.p2_4),
+                (ImageButton) findViewById(R.id.p2_3),
+                (ImageButton) findViewById(R.id.p2_2),
+                (ImageButton) findViewById(R.id.p2_1),
+                (ImageButton) findViewById(R.id.p2_0)
+        };
+        for (int i = 0; i < buttons.length; i++) {
+            this.buttons[i] = buttons[i];
+        }
         String name = getIntent().getStringExtra(Game.PLAYER1);
         Player player1 = new Player(name);
 
         Player player2;
-        if(getIntent().hasExtra(Game.PLAYER2)) {
+        if (getIntent().hasExtra(Game.PLAYER2)) {
             name = getIntent().getStringExtra(Game.PLAYER2);
             player2 = new Player(name);
-        }else {
+        } else {
             player2 = new AIPlayer();
         }
 
@@ -45,24 +72,6 @@ public class MainActivity extends AppCompatActivity {
         textView_player1.setText(player1.getPlayerName());
         textView_player2.setText(player2.getPlayerName());
 
-        final Button[] buttons = {
-                (Button) findViewById(R.id.p1_h),
-                (Button) findViewById(R.id.p1_0),
-                (Button) findViewById(R.id.p1_1),
-                (Button) findViewById(R.id.p1_2),
-                (Button) findViewById(R.id.p1_3),
-                (Button) findViewById(R.id.p1_4),
-                (Button) findViewById(R.id.p1_5),
-                (Button) findViewById(R.id.p1_6),
-                (Button) findViewById(R.id.p2_h),
-                (Button) findViewById(R.id.p2_6),
-                (Button) findViewById(R.id.p2_5),
-                (Button) findViewById(R.id.p2_4),
-                (Button) findViewById(R.id.p2_3),
-                (Button) findViewById(R.id.p2_2),
-                (Button) findViewById(R.id.p2_1),
-                (Button) findViewById(R.id.p2_0)
-        };
 
         game = new Game(new Board(player1, player2));
 
@@ -70,51 +79,71 @@ public class MainActivity extends AppCompatActivity {
 
         buttonToSlot = new HashMap<>();
 
-        for (int i=0;i<buttons.length;i++){
-            buttonToSlot.put(buttons[i],slots[i]);
-            buttons[i].setText(Integer.toString(slots[i].getBallCount()));
-            buttons[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    game.turn(buttonToSlot.get(v));
-                    for (int i=0;i<buttons.length;i++){
-                        buttons[i].setText(Integer.toString(game.getBoard().getSlots()[i].getBallCount()));
-                    }
-                }
-            });
-        }
+//        for (int i=0;i<buttons.length;i++){
+//            buttonToSlot.put(buttons[i],slots[i]);
+//            buttons[i].setText(Integer.toString(slots[i].getBallCount()));
+//            buttons[i].setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    game.turn(buttonToSlot.get(v));
+//                    for (int i=0;i<buttons.length;i++){
+//                        buttons[i].setText(Integer.toString(game.getBoard().getSlots()[i].getBallCount()));
+//                    }
+//                }
+//            });
+//        }
     }
 
-    //Not used
-    //Registers when a button is clicked 'changed'
-//    public void clicked(View view){
-//
-//        int id = view.getId();
-//        Resources res = view.getResources();
-//        String idString = res.getResourceEntryName(id);
-//
-//        System.out.println(idString);
-//
-//        //Create another hash map, to allow easy reference to the UI buttons
-//        HashMap buttons = new HashMap<String, Button>();
-//        //Loop twice, once for each player
-//        for (int i = 1; i < 3; i++) {
-//            String playerString = "p" + Integer.toString(i) + "_";
-//            //Loop 6 times, once for each of the main buttons
-//            for (int j = 0; j < 6; j++) {
-//                String buttonID = playerString + Integer.toString(j);
-//                Button button = (Button) findViewById(getResources().getIdentifier(buttonID, "id", getPackageName()));
-//                buttons.put(buttonID, button);
-//            }
-//            //Add the home button
-//            String buttonID = playerString + "h";
-//            Button button = (Button) findViewById(getResources().getIdentifier(buttonID, "id", getPackageName()));
-//            buttons.put(buttonID, button);
-//        }
-//
-//        //Refer to the clicked method in the slot object
-//        Slot y = (Slot)slots.get(idString);
-//        y.clicked(buttons, idString);
-//    }
 
-}
+    @Override
+    public void onWindowFocusChanged(boolean loaded) {
+        super.onWindowFocusChanged(loaded);
+        if (loaded) {
+            ViewGroup  comtainer = (ViewGroup)findViewById(R.id.container);
+            ViewGroup game_board = (ViewGroup)findViewById(R.id.board);
+            ViewGroup coinView1 = (ViewGroup) findViewById(R.id.coinView1);
+//            float x = buttons[4].getX();
+//            float y = buttons[4].getY();
+//
+//
+//            ImageView coinImage = new ImageView(layoutSunkaBoard.getContext());
+//            coinImage.setImageResource(R.drawable.coin);
+//            imageCoin = (ImageView)findViewById(R.id.coinImage);
+//            int inmgw = R.drawable.coin;
+            //imageCoin.setBackground(getDrawable(inmgw));
+           // imageCoin.setY(y);
+            // imageCoin.setX(x);
+
+           // imageCoin.animate().translationXBy(buttons[4].getX()).translationYBy(buttons[4].getY()).setDuration(0);
+
+
+
+           // for(ImageButton button : buttons){
+             //   for( int i=0;i<Integer.parseInt(button.getText().toString());i++){
+                int min_numbCoin = 7;
+               // for (int i = 0 ; i < 7 ; i++) {
+                    ImageView coinImage = new ImageView(coinView1.getContext());
+                    coinImage.setImageResource(R.drawable.coin);
+                    ImageButton button = buttons[14];
+                    Log.d("button", button.toString());
+
+                   // coinImage.animate().translationXBy(button.getX()).translationYBy(button.getY()).setDuration(0);
+                    coinImage.setX(button.getX() - (game_board.getX() - coinView1.getX()));
+                    coinImage.setY(button.getY()-(comtainer.getY() - game_board.getY()));
+                    Log.d("cordinates", "" + button.getX() + "" + button.getY());
+
+//                    coinImage.setX(button.getX());
+//                    coinImage.setY(button.getY());
+                    coinView1.addView(coinImage);
+                }
+                }
+
+     //       int density = (int) getResources().getDisplayMetrics().density;
+   //         Log.d("dpi", "" + density);
+ //           Log.d("Test_cordinates", "" + xforbutton1 + " " + yforbutton1);
+
+        }
+
+
+
+

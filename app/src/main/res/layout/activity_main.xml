@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:id="@+id/container"
     tools:context=".MainScreenActivity">
 
     <TextView
@@ -16,7 +17,7 @@
 
     <include layout="@layout/layout_sunka_board"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></include>
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/player1_Text"
