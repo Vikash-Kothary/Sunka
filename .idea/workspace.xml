@@ -20,7 +20,7 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d54ebe6d-8c73-4684-a848-34aed3e11fce" name="Default" comment="Merged">
@@ -28,6 +28,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="D:\Documents\AndroidStudioProjects\Sunka\app\src\main\java\com\teamhawk\sunka\logic\Game.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/logic/Game.java" />
+      <change type="MODIFICATION" beforePath="D:\Documents\AndroidStudioProjects\Sunka\app\src\main\java\com\teamhawk\sunka\ui\StatisticsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/ui/StatisticsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Documents\AndroidStudioProjects\Sunka\app\src\main\res\layout\statistics_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_statistics.xml" />
+>>>>>>> 1a3571f4ec6db151cc01cfdcddfee6e0443cae86
     </list>
     <ignored path="sunka.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -102,8 +110,13 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/ui/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.8606557">
               <caret line="174" column="7" selection-start-line="133" selection-start-column="15" selection-end-line="174" selection-end-column="7" />
+=======
+            <state vertical-scroll-proportion="0.48907104">
+              <caret line="118" column="37" selection-start-line="118" selection-start-column="37" selection-end-line="118" selection-end-column="37" />
+>>>>>>> 1a3571f4ec6db151cc01cfdcddfee6e0443cae86
               <folding />
             </state>
           </provider>
@@ -2129,8 +2142,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/teamhawk/sunka/ui/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.8606557">
           <caret line="174" column="7" selection-start-line="133" selection-start-column="15" selection-end-line="174" selection-end-column="7" />
+=======
+        <state vertical-scroll-proportion="0.48907104">
+          <caret line="118" column="37" selection-start-line="118" selection-start-column="37" selection-end-line="118" selection-end-column="37" />
+>>>>>>> 1a3571f4ec6db151cc01cfdcddfee6e0443cae86
           <folding />
         </state>
       </provider>
