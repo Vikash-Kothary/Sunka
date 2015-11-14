@@ -9,14 +9,9 @@ public class Game {
     public final static String PLAYER2 = "com.teamhawk.sunka.PLAYER2";
 
     private Board board;
-    private Player player1;
-    private Player player2;
-    private boolean turn;
-    private boolean anotherTurn;
-
-    private int ballsInPlay;
-    private int player1Balls;
-    private int player2Balls;
+    private Player player1, player2;
+    private boolean turn, anotherTurn, firstTurn;
+    private int ballsInPlay, player1Balls, player2Balls;
 
     //Not used
 //    public Game(Board board, Player player1, Player player2){
@@ -42,7 +37,8 @@ public class Game {
         }
 
         anotherTurn=false;
-        System.out.println(turn);
+        firstTurn=true;
+//        System.out.println(turn);
     }
 
     //Player one is true

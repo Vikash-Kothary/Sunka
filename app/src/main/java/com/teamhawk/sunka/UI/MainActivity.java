@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
 //    Player player1;
 //    Player player2;
     private Board slots;
-    private HashMap<ImageButton, Slot> buttonToSlot;
+//    private HashMap<ImageButton, Slot> buttonToSlot;
+    private HashMap<Button, Slot> buttonToSlot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,47 +65,65 @@ public class MainActivity extends AppCompatActivity {
 //        chrom1 = (Chronometer) findViewById(R.id.chronometer1);
 //        chrom2 = (Chronometer) findViewById(R.id.chronometer2);
 
-        ImageButton[] buttons = {
-                (ImageButton) findViewById(R.id.p1_h),
-                (ImageButton) findViewById(R.id.p1_0),
-                (ImageButton) findViewById(R.id.p1_1),
-                (ImageButton) findViewById(R.id.p1_2),
-                (ImageButton) findViewById(R.id.p1_3),
-                (ImageButton) findViewById(R.id.p1_4),
-                (ImageButton) findViewById(R.id.p1_5),
-                (ImageButton) findViewById(R.id.p1_6),
-                (ImageButton) findViewById(R.id.p2_h),
-                (ImageButton) findViewById(R.id.p2_6),
-                (ImageButton) findViewById(R.id.p2_5),
-                (ImageButton) findViewById(R.id.p2_4),
-                (ImageButton) findViewById(R.id.p2_3),
-                (ImageButton) findViewById(R.id.p2_2),
-                (ImageButton) findViewById(R.id.p2_1),
-                (ImageButton) findViewById(R.id.p2_0)
+//        ImageButton[] buttons = {
+//                (ImageButton) findViewById(R.id.p1_h),
+//                (ImageButton) findViewById(R.id.p1_0),
+//                (ImageButton) findViewById(R.id.p1_1),
+//                (ImageButton) findViewById(R.id.p1_2),
+//                (ImageButton) findViewById(R.id.p1_3),
+//                (ImageButton) findViewById(R.id.p1_4),
+//                (ImageButton) findViewById(R.id.p1_5),
+//                (ImageButton) findViewById(R.id.p1_6),
+//                (ImageButton) findViewById(R.id.p2_h),
+//                (ImageButton) findViewById(R.id.p2_6),
+//                (ImageButton) findViewById(R.id.p2_5),
+//                (ImageButton) findViewById(R.id.p2_4),
+//                (ImageButton) findViewById(R.id.p2_3),
+//                (ImageButton) findViewById(R.id.p2_2),
+//                (ImageButton) findViewById(R.id.p2_1),
+//                (ImageButton) findViewById(R.id.p2_0)
+//        };
+
+        final Button[] buttons = {
+                (Button) findViewById(R.id.p1_h),
+                (Button) findViewById(R.id.p1_0),
+                (Button) findViewById(R.id.p1_1),
+                (Button) findViewById(R.id.p1_2),
+                (Button) findViewById(R.id.p1_3),
+                (Button) findViewById(R.id.p1_4),
+                (Button) findViewById(R.id.p1_5),
+                (Button) findViewById(R.id.p1_6),
+                (Button) findViewById(R.id.p2_h),
+                (Button) findViewById(R.id.p2_6),
+                (Button) findViewById(R.id.p2_5),
+                (Button) findViewById(R.id.p2_4),
+                (Button) findViewById(R.id.p2_3),
+                (Button) findViewById(R.id.p2_2),
+                (Button) findViewById(R.id.p2_1),
+                (Button) findViewById(R.id.p2_0)
         };
 
-        game = new Game(new Board(player1, player2));
+        if(game==null){
+            game = new Game(new Board(player1, player2));
+            Slot[] slots = game.getBoard().getSlots();
 
-        Slot[] slots = game.getBoard().getSlots();
+            buttonToSlot = new HashMap<>();
 
-        buttonToSlot = new HashMap<>();
-
-        for (int i = 0; i < buttons.length; i++) {
-            buttonToSlot.put(buttons[i], slots[i]);
-//            buttons[i].setText(Integer.toString(slots[i].getBallCount()));
-            buttons[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    game.turn(buttonToSlot.get(v));
-//                    for (int i = 0; i < buttons.length; i++) {
-//                        buttons[i].setText(Integer.toString(game.getBoard().getSlots()[i].getBallCount()));
+            for (int i = 0; i < buttons.length; i++) {
+                buttonToSlot.put(buttons[i], slots[i]);
+            buttons[i].setText(Integer.toString(slots[i].getBallCount()));
+                buttons[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        game.turn(buttonToSlot.get(v));
+                    for (int i = 0; i < buttons.length; i++) {
+                        buttons[i].setText(Integer.toString(game.getBoard().getSlots()[i].getBallCount()));
 //                        timerCode(v, buttons);
-//                    }
-                }
-            });
+                    }
+                    }
+                });
+            }
         }
-
-
 
         //       int density = (int) getResources().getDisplayMetrics().density;
         //         Log.d("dpi", "" + density);
