@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="@dimen/activity_vertical_margin"
+    android:padding="@dimen/fragment_margin"
     android:showDividers="beginning"
     android:stretchColumns="7"
     tools:context="com.teamhawk.sunka.ui.StatisticsFragment">
@@ -35,6 +35,5 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_weight="1" />
-
 
 </TableLayout>

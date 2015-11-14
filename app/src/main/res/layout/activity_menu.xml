@@ -4,4 +4,5 @@
     android:name="com.teamhawk.sunka.MenuFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_choosename1"
     tools:context=".MenuActivity" />

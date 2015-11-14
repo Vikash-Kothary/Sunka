@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
 //        chrom2 = (Chronometer) findViewById(R.id.chronometer2);
 
         if (savedInstanceState != null && savedInstanceState.containsKey(GameSaveState.KEY)) {
-            Log.e(TAG, "Resume");
             game = ((GameSaveState) savedInstanceState.getParcelable(GameSaveState.KEY)).getGame();
 
             textView_player1.setText(game.getPlayer1().getPlayerName());
@@ -112,11 +111,6 @@ public class MainActivity extends AppCompatActivity {
             textView_player2.setText(player2.getPlayerName());
 
             game = new Game(new Board(player1, player2));
-//        Dialog dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.dialog_game_overt);
-//        dialog.setTitle("The winner is:");
-//        dialog.setCancelable(true);
-//        dialog.show();
 
         }
         Slot[] slots = game.getBoard().getSlots();
@@ -141,8 +135,13 @@ public class MainActivity extends AppCompatActivity {
                             stats.open();
                             stats.createEntry(game.getPlayer(winner));
                             stats.close();
-                        }
 
+//                            Dialog dialog = new Dialog(getApplicationContext());
+//                            dialog.setContentView(R.layout.dialog_game_over);
+//                            dialog.setTitle("The winner is:");
+//                            dialog.setCancelable(true);
+//                            dialog.show();
+                        }
                     }
                 }
             });
@@ -266,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 //                                           @Override
 //                                           public void onClick(View v) {
 //                                               Dialog dialog = new Dialog(MainActivity.this);
-//                                               dialog.setContentView(R.layout.dialog_game_overt);
+//                                               dialog.setContentView(R.layout.dialog_game_over);
 //                                               dialog.setTitle("The winner is:");
 //                                               dialog.setCancelable(true);
 //

@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_choosename1"
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.teamhawk.sunka.OnlinePlayerNamingFragment">
@@ -12,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:singleLine="true"
         android:hint="@string/typeOnline_HintText"/>
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:gravity="center_vertical|center_horizontal"
-            android:text="@string/submit_button" />
+            android:text="@string/submit_button"/>
 
     </LinearLayout>
 

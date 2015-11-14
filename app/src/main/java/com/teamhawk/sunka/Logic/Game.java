@@ -1,5 +1,11 @@
 package com.teamhawk.sunka.logic;
 
+import android.util.Log;
+
+import com.teamhawk.sunka.ui.MainActivity;
+
+import java.util.Calendar;
+
 /**
  * Created by Vikash Kothary on 23-Oct-15.
  */
@@ -11,7 +17,9 @@ public class Game {
     private Board board;
     private Player player1, player2;
     private boolean turn, anotherTurn, firstTurn;
-    private int ballsInPlay, player1Balls, player2Balls;
+    private int ballsInPlay, player1Balls, player2Balls, shellsLeft1, shellsLeft2;
+    private Slot nextSlot1, nextSlot2, targetSlot1, targetSlot2;
+
 
     //Not used
 //    public Game(Board board, Player player1, Player player2){
@@ -28,22 +36,30 @@ public class Game {
         init();
     }
 
-    private void init(){
+    private void init() {
         //Random player start unless there is an AI, in which case give priority to the human
-        if (player2.isAI()){
+        if (player2.isAI()) {
             turn = true;
         } else {
             turn = Math.random() < 0.5;
         }
 
-        anotherTurn=false;
+        anotherTurn = false;
         firstTurn=true;
+        nextSlot1 = null;
+        nextSlot2 = null;
+        targetSlot1 = null;
+        targetSlot2 = null;
 //        System.out.println(turn);
     }
 
+    public void skipFirstTurn() {
+        firstTurn=false;
+    }
+
     //Player one is true
-    private Player getTurnPlayer(){
-        if(turn) return player1;
+    public Player getTurnPlayer() {
+        if (turn) return player1;
         return player2;
     }
 
@@ -58,7 +74,7 @@ public class Game {
             turn = true;
         }
 
-        if (turn == false && player2.isAI()){
+        if (turn == false && player2.isAI()) {
             player2.takeTurn(this);
             //turn = true;
         }
@@ -68,42 +84,96 @@ public class Game {
         return board;
     }
 
-    public void turn(Slot slot){
-        Player inTurn = getTurnPlayer();
-
-        //Comment out 'slot.getPlayer().equals(inTurn) && ' to skip the turn enforcement
-        if (slot.getPlayer().equals(inTurn) && !slot.isHomeSlot() && (slot.getBallCount() != 0)){
-
-            //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
-
-            //Make the turn
-            anotherTurn = board.clicked(slot, inTurn);
-
-            //Reset the ball counts for the next bit
-            ballsInPlay = 0;
-            player1Balls = 0;
-            player2Balls = 0;
-
-            //If there are no balls in play determine the winner
-            if (checkWinner()!=null){
-
-                //Game is over, create delay then exit
-                try {
-                    Thread.sleep(10000); //1000 milliseconds is one second.
-                } catch(InterruptedException ex) {
-                    Thread.currentThread().interrupt();
+    public void firstTurnLogic(Slot slot) {
+        if (slot.getPlayer().equals(player1)) {
+            if (targetSlot1 == null) {
+                nextSlot1 = slot.getNext();
+                targetSlot1 = slot;
+                for (int i = 0; i < slot.getBallCount(); i++) {
+                    targetSlot1 = targetSlot1.getNext();
                 }
-                System.exit(0);
+                shellsLeft1 = slot.resetBallCount();
+            } else if (nextSlot1 != null) {
+                if (slot.equals(targetSlot1)) {
+                    firstTurn=false;
+                    nextSlot1.incrementBallCount();
+                    for(int i=0; i<shellsLeft2;i++){
+                        nextSlot2.incrementBallCount();
+                        nextSlot2 = nextSlot2.getNext();
+                    }
+                    if (getTurnPlayer().equals(player1)) anotherTurn = true;
+                    nextTurn();
+                } else if (slot.equals(nextSlot1)) {
+                    nextSlot1.incrementBallCount();
+                    nextSlot1 = nextSlot1.getNext();
+                }
             }
-            //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
+        } else {
+            if (targetSlot2 == null) {
+                nextSlot2 = slot.getNext();
+                targetSlot2 = slot;
+                for (int i = 0; i < slot.getBallCount(); i++) {
+                    targetSlot2 = targetSlot2.getNext();
+                }
+                shellsLeft2 = slot.resetBallCount();
+            } else if (nextSlot2 != null) {
+                if (slot.equals(targetSlot2)) {
+                    firstTurn=false;
+                    nextSlot2.incrementBallCount();
+                    for(int i=0; i<shellsLeft1;i++){
+                        nextSlot1.incrementBallCount();
+                        nextSlot1 = nextSlot1.getNext();
+                    }
+                    if (getTurnPlayer().equals(player2)) anotherTurn = true;
+                    nextTurn();
+                } else if (slot.equals(nextSlot2)) {
+                    nextSlot2.incrementBallCount();
+                    nextSlot2 = nextSlot2.getNext();
+                }
+            }
+        }
+    }
 
-            //Update who's next
-            nextTurn();
+    public void turn(Slot slot) {
+        if(firstTurn){
+            firstTurnLogic(slot);
+        }else {
+            Player inTurn = getTurnPlayer();
+
+            //Comment out 'slot.getPlayer().equals(inTurn) && ' to skip the turn enforcement
+            if (slot.getPlayer().equals(inTurn) && !slot.isHomeSlot() && (slot.getBallCount() != 0)) {
+
+                //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
+
+                //Make the turn
+                anotherTurn = board.clicked(slot, inTurn);
+
+                //Reset the ball counts for the next bit
+                ballsInPlay = 0;
+                player1Balls = 0;
+                player2Balls = 0;
+
+                //If there are no balls in play determine the winner
+                if (checkWinner() != null) {
+
+                    //Game is over, create delay then exit
+                    try {
+                        Thread.sleep(10000); //1000 milliseconds is one second.
+                    } catch (InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                    System.exit(0);
+                }
+                //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
+
+                //Update who's next
+                nextTurn();
+            }
         }
     }
 
     //Check the status of the balls in the game
-    private boolean checkBalls(Slot slot){
+    private boolean checkBalls(Slot slot) {
         int ID = slot.getId();
         if (ID != 15) {
             int ballsToAdd = slot.getBallCount();
@@ -116,19 +186,17 @@ public class Game {
         return ballsInPlay == 0;
     }
 
-    public String checkWinner(){
+    public String checkWinner() {
         if (checkBalls(board.get(1)) == true) {
             int p1Ct = board.get(0).getBallCount();
             int p2Ct = board.get(8).getBallCount();
-            if (p1Ct > p2Ct){
+            if (p1Ct > p2Ct) {
                 return player1.getPlayerName();
                 //System.out.println("p1 won"); Do stuff here for P1 win
-            }
-            else if (p2Ct > p1Ct) {
+            } else if (p2Ct > p1Ct) {
                 return player2.getPlayerName();
                 // System.out.println("p2 won"); Do stuff here for P2 win
-            }
-            else return "tie"; //DO stuff here for tie
+            } else return "tie"; //DO stuff here for tie
         }
         return null;
     }
@@ -145,7 +213,7 @@ public class Game {
         return player1Balls;
     }
 
-    public Player getPlayer(String playerName){
+    public Player getPlayer(String playerName) {
         return board.getPlayer(playerName);
     }
 
@@ -161,7 +229,7 @@ public class Game {
         return player1;
     }
 
-    public void rematch(){
+    public void rematch() {
         this.board = new Board(player1, player2);
         init();
     }

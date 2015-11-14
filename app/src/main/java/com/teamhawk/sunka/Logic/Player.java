@@ -29,6 +29,8 @@ public class Player {
         movesTaken = 0;
     }
 
+
+
     public String getPlayerName() {
         return playerName;
     }
@@ -86,6 +88,30 @@ public class Player {
 
     public int getButtonClicked() {
         return buttonClicked;
+    }
+
+    public void setGamesWon(int gamesWon) {
+        this.gamesWon = gamesWon;
+    }
+
+    public void setGamesLost(int gamesLost) {
+        this.gamesLost = gamesLost;
+    }
+
+    public void setGamesDrawn(int gamesDrawn) {
+        this.gamesDrawn = gamesDrawn;
+    }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
+    public void setAverageMoveTimeInSeconds(int averageMoveTimeInSeconds) {
+        this.averageMoveTimeInSeconds = averageMoveTimeInSeconds;
+    }
+
+    public void setAverageGameTimeInSeconds(int averageGameTimeInSeconds) {
+        this.averageGameTimeInSeconds = averageGameTimeInSeconds;
     }
 
     public void setButtonClicked(int buttonClicked) {

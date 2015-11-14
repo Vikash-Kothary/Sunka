@@ -11,10 +11,12 @@ public class Slot {
     private int id;
     private int ballCt;
     private Player player;
+    private boolean clickable;
 
     public Slot(int id, Player player) {
         this.id = id;
         this.player = player;
+        this.clickable=true;
     }
 
     public int getBallCount() {
@@ -41,8 +43,10 @@ public class Slot {
         return home;
     }
 
-    public void resetBallCount(){
+    public int resetBallCount(){
+        int ballCount = ballCt;
         ballCt=0;
+        return ballCount;
     }
 
     public boolean isHomeSlot() {
@@ -60,4 +64,23 @@ public class Slot {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Slot)) return false;
+
+        Slot slot = (Slot) o;
+
+        return id == slot.id;
+    }
+
+    //
+//    public boolean getClickable(){
+//        return clickable;
+//    }
+//
+//    public void setClickable(boolean clickable){
+//        this.clickable = clickable;
+//    }
 }

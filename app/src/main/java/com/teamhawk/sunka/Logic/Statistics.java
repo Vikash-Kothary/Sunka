@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.graphics.Point;
+import android.util.Log;
+
+import com.teamhawk.sunka.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,15 +45,16 @@ public class Statistics {
         @Override
         public void onCreate(SQLiteDatabase db) {
             String sql = "CREATE TABLE " + DATABASE_TABLE + " (";
-                sql += KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT";
-                sql += ", " + KEY_PLAYERNAME + "TEXT NOT NULL";
-                sql += ", " + KEY_WIN + "INTEGER NOT NULL";
-                sql += ", " + KEY_LOSE + "INTEGER NOT NULL";
-                sql += ", " + KEY_DRAW + "INTEGER NOT NULL";
-                sql += ", " + KEY_HS + "INTEGER NOT NULL";
-                sql += ", " + KEY_AT + "INTEGER NOT NULL";
-                sql += ", " + KEY_ATT + "INTEGER NOT NULL";
+                sql += KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT";
+                sql += ", " + KEY_PLAYERNAME + " TEXT NOT NULL";
+                sql += ", " + KEY_WIN + " INTEGER ";
+                sql += ", " + KEY_LOSE + " INTEGER";
+                sql += ", " + KEY_DRAW + " INTEGER";
+                sql += ", " + KEY_HS + " INTEGER";
+                sql += ", " + KEY_AT + " INTEGER";
+                sql += ", " + KEY_ATT + " INTEGER";
             sql += ");";
+//            Log.e(MainActivity.TAG, sql);
             db.execSQL(sql);
         }
 
@@ -77,7 +81,6 @@ public class Statistics {
     }
 
     public long createEntry(Player player){
-        deleteEntry(player.getPlayerName());
         ContentValues cv = new ContentValues();
         cv.put(KEY_PLAYERNAME, player.getPlayerName());
         cv.put(KEY_WIN, player.getGamesWon());
@@ -90,12 +93,18 @@ public class Statistics {
     }
 
     public Player[] getEntries() {
-        String[] columns = {KEY_PLAYERNAME, KEY_WIN, KEY_LOSE, KEY_DRAW, KEY_HS, KEY_AT, KEY_ATT};
+        String[] columns = {KEY_ID, KEY_PLAYERNAME, KEY_WIN, KEY_LOSE, KEY_DRAW, KEY_HS, KEY_AT, KEY_ATT};
         Cursor c = mDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
         ArrayList<Player> entryList = new ArrayList<>();
         for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
             Player player = new Player(null);
-
+            player.setPlayerName(c.getString(c.getColumnIndex(KEY_PLAYERNAME)));
+            player.setGamesWon(c.getInt(c.getColumnIndex(KEY_WIN)));
+            player.setGamesLost(c.getInt(c.getColumnIndex(KEY_LOSE)));
+            player.setGamesDrawn(c.getInt(c.getColumnIndex(KEY_DRAW)));
+            player.setHighScore(c.getInt(c.getColumnIndex(KEY_HS)));
+            player.setAverageMoveTimeInSeconds(c.getInt(c.getColumnIndex(KEY_AT)));
+            player.setAverageGameTimeInSeconds(c.getInt(c.getColumnIndex(KEY_ATT)));
             entryList.add(player);
         }
         Player[] entries = new Player[entryList.size()];
@@ -105,5 +114,17 @@ public class Statistics {
 
     public void deleteEntry(String playerName){
         mDatabase.execSQL("DELETE FROM " + DATABASE_TABLE + " WHERE " + KEY_PLAYERNAME + "=\"" + playerName + "\";");
+    }
+
+    public void updateEntry(Player player){
+        ContentValues cv = new ContentValues();
+        cv.put(KEY_PLAYERNAME, player.getPlayerName());
+        cv.put(KEY_WIN, player.getGamesWon());
+        cv.put(KEY_LOSE, player.getGamesLost());
+        cv.put(KEY_DRAW, player.getGamesDrawn());
+        cv.put(KEY_HS, player.getHighScore());
+        cv.put(KEY_AT, player.getAverageMoveTime());
+        cv.put(KEY_ATT, player.getAverageGameTime());
+        mDatabase.update(DATABASE_TABLE, cv, KEY_PLAYERNAME + "="+ player.getPlayerName(), null);
     }
 }
