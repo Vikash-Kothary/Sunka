@@ -1,141 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/board"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/p2_h"
-        android:clickable="false"
-        android:focusable="false"/>
-
-    <!-- Layout for the 14 cups   -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/background_sea"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical">
 
         <!-- first 7 cups -->
-        <LinearLayout
+    <RelativeLayout
+        android:id="@+id/coinView1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingBottom="50dp">
+        android:background="@drawable/ship2"
+        android:gravity="center_vertical|center_horizontal">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/p2_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignTop="@+id/p2_6"
+            android:background="@drawable/treasure_chest2"
+            android:clickable="false"
+            android:focusable="false" />
+
+        <ImageButton
+            android:id="@+id/p2_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/p2_h"
                 android:layout_weight="1"
-                android:id="@+id/p2_6" />
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/p2_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/p2_6"
+
                 android:layout_weight="1"
-                android:id="@+id/p2_5" />
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/p2_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/p2_5"
+
                 android:layout_weight="1"
-                android:id="@+id/p2_4" />
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/p2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/p2_4"
+
                 android:layout_weight="1"
-                android:id="@+id/p2_3" />
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/p2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/p2_3"
+
                 android:layout_weight="1"
-                android:id="@+id/p2_2" />
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/p2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/p2_2"
+
                 android:layout_weight="1"
-                android:id="@+id/p2_1" />
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p2_0" />
+        <ImageButton
+            android:id="@+id/p2_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/p2_1"
 
-        </LinearLayout>
+            android:layout_weight="1"
+            android:background="@drawable/barrel" />
 
+    </RelativeLayout>
         <!-- end of the first seven cups -->
 
         <!-- start of second set of 7 cups -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@drawable/ship1"
+        android:gravity="center_vertical|center_horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/p1_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+
+            android:layout_toStartOf="@+id/p1_1"
+                android:layout_weight="1"
+            android:background="@drawable/barrel" />
+
+        <ImageButton
+            android:id="@+id/p1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="30dp"
+            android:layout_toStartOf="@+id/p1_2"
+            android:background="@drawable/barrel" />
+
+        <ImageButton
+            android:id="@+id/p1_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+
+            android:layout_toStartOf="@+id/p1_3"
+                android:layout_weight="1"
+            android:background="@drawable/barrel" />
+
+        <ImageButton
+            android:id="@+id/p1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+
+            android:layout_toStartOf="@+id/p1_4"
+                android:layout_weight="1"
+            android:background="@drawable/barrel" />
+
+        <ImageButton
+            android:id="@+id/p1_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+
+            android:layout_toStartOf="@+id/p1_5"
+                android:layout_weight="1"
+            android:background="@drawable/barrel" />
+
+        <ImageButton
+            android:id="@+id/p1_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+
+            android:layout_toStartOf="@+id/p1_6"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingTop="50dp">
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_0" />
+        <ImageButton
+            android:id="@+id/p1_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_1" />
+            android:layout_toStartOf="@+id/p1_h"
+            android:layout_weight="1"
+            android:background="@drawable/barrel" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_2" />
+        <ImageButton
+            android:id="@+id/p1_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="56dp"
+            android:layout_weight="1"
+            android:background="@drawable/treasure_chestp1"
+            android:clickable="false"
+            android:focusable="false" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_3" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_4" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_5" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/p1_6" />
-
-        </LinearLayout>
-        <!-- start of second set of 7 cups -->
-
-    </LinearLayout>
-
-    <!-- end Layout for the 14 cups   -->
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/p1_h"
-        android:clickable="false"
-        android:focusable="false"/>
-
+    </RelativeLayout>
+    <!-- start of second set of 7 cups -->
 </LinearLayout>

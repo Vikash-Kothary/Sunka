@@ -1,32 +1,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainScreenActivity">
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/options_Button"
+        android:layout_width="39dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right"
+        android:text="@string/Options" />
+
+    <Chronometer
+        android:id="@+id/chronometer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left" />
 
     <TextView
         android:id="@+id/player2_Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
+        android:text="@string/player2_Text"
         android:textColor="#000000"
-        android:textStyle="italic"
-        android:text="@string/player2_Text"/>
+        android:textStyle="italic" />
 
     <include layout="@layout/layout_sunka_board"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></include>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/player1_Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:textColor="#000000"
-        android:text="@string/player1_Text"/>
+        android:text="@string/player1_Text"
+        android:textColor="#000000" />
 
 </LinearLayout>
