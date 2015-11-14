@@ -1,18 +1,11 @@
 package com.teamhawk.sunka.logic;
 
-import android.util.Log;
-
-import com.teamhawk.sunka.ui.MainActivity;
-
 import java.util.ArrayList;
 
 /**
  * The board layout
  */
 public class Board extends ArrayList<Slot> {
-
-    public Player player1, player2, inTurn;
-    private boolean anotherTurn;
 
     public static final int P1_1 = 0;
     public static final int P1_2 = 1;
@@ -22,7 +15,6 @@ public class Board extends ArrayList<Slot> {
     public static final int P1_6 = 5;
     public static final int P1_7 = 6;
     public static final int P1_h = 7;
-
     public static final int P2_1 = 8;
     public static final int P2_2 = 9;
     public static final int P2_3 = 10;
@@ -31,6 +23,8 @@ public class Board extends ArrayList<Slot> {
     public static final int P2_6 = 13;
     public static final int P2_7 = 14;
     public static final int P2_h = 15;
+    public Player player1, player2, inTurn;
+    private boolean anotherTurn;
 
     public Board(Player player1, Player player2) {
         this.player1 = player1;
@@ -94,7 +88,13 @@ public class Board extends ArrayList<Slot> {
         add(p2_4);  //12
         add(p2_3);  //13
         add(p2_2);  //14
-        add(p2_1);; //15
+        add(p2_1);  //15
+    }
+
+    public Player getPlayer(String playerName){
+        if(player1.getPlayerName().equalsIgnoreCase(playerName)) return player1;
+        else if(player2.getPlayerName().equalsIgnoreCase(playerName)) return player2;
+        return null;
     }
 
     public boolean clicked(Slot slot, Player player) {

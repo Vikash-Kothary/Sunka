@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.teamhawk.sunka.logic.Game;
 import com.teamhawk.sunka.R;
+import com.teamhawk.sunka.logic.Game;
 
 import static com.teamhawk.sunka.R.id.statistics_button;
 
@@ -64,8 +64,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                 break;
             case statistics_button:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new Statistics()).addToBackStack(null)
-                        .commit();
+                        .replace(R.id.fragment_container, new StatisticsFragment()).addToBackStack(null)
+                                .commit();
                 break;
         }
     }

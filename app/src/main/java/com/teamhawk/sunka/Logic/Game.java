@@ -1,7 +1,5 @@
 package com.teamhawk.sunka.logic;
 
-import java.util.Random;
-
 /**
  * Created by Vikash Kothary on 23-Oct-15.
  */
@@ -91,12 +89,7 @@ public class Game {
             player2Balls = 0;
 
             //If there are no balls in play determine the winner
-            if (checkBalls(board.get(1)) == true) {
-                int p1Ct = board.get(0).getBallCount();
-                int p2Ct = board.get(8).getBallCount();
-                if (p1Ct > p2Ct) System.out.println("p1 won"); //Do stuff here for P1 win
-                else if (p2Ct > p1Ct) System.out.println("p2 won"); //Do stuff here for P2 win
-                else System.out.println("tie"); //DO stuff here for tie
+            if (checkWinner()!=null){
 
                 //Game is over, create delay then exit
                 try {
@@ -124,7 +117,56 @@ public class Game {
             checkBalls(slot.getNext());
         }
         //Return true if there are no balls left in play
-        if (ballsInPlay == 0) return true;
-        return false;
+        return ballsInPlay == 0;
+    }
+
+    public String checkWinner(){
+        if (checkBalls(board.get(1)) == true) {
+            int p1Ct = board.get(0).getBallCount();
+            int p2Ct = board.get(8).getBallCount();
+            if (p1Ct > p2Ct){
+                return player1.getPlayerName();
+                //System.out.println("p1 won"); Do stuff here for P1 win
+            }
+            else if (p2Ct > p1Ct) {
+                return player2.getPlayerName();
+                // System.out.println("p2 won"); Do stuff here for P2 win
+            }
+            else return "tie"; //DO stuff here for tie
+        }
+        return null;
+    }
+
+    public boolean getTurn() {
+        return turn;
+    }
+
+    public int getPlayer2Shells() {
+        return player2Balls;
+    }
+
+    public int getPlayer1Shells() {
+        return player1Balls;
+    }
+
+    public Player getPlayer(String playerName){
+        return board.getPlayer(playerName);
+    }
+
+    public int numberOfShells() {
+        return ballsInPlay;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public void rematch(){
+        this.board = new Board(player1, player2);
+        init();
     }
 }

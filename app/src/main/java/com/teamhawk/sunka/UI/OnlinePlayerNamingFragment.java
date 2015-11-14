@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.teamhawk.sunka.logic.Game;
 import com.teamhawk.sunka.R;
+import com.teamhawk.sunka.logic.Game;
 
 /**
  * A placeholder fragment containing a simple view.

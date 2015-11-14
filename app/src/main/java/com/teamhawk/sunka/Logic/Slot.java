@@ -1,20 +1,16 @@
 package com.teamhawk.sunka.logic;
 
-import android.widget.Button;
-
-import java.util.HashMap;
-
 /**
  * Created by Vikash Kothary on 23-Oct-15.
  */
 public class Slot {
 
-    private int id;
-    private int ballCt;
-    private Player player;
     protected Slot next;
     protected Slot opposite;
     protected Slot home;
+    private int id;
+    private int ballCt;
+    private Player player;
 
     public Slot(int id, Player player) {
         this.id = id;
@@ -53,15 +49,15 @@ public class Slot {
         return false;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     public int getId() {
         return id;
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }
