@@ -3,270 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/activity_vertical_margin"
     android:showDividers="beginning"
     android:stretchColumns="7"
     tools:context="com.teamhawk.sunka.ui.StatisticsFragment">
 
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp" android:background="#000000"/>
-    <TableRow
+    <include layout="@layout/layout_statistics_header"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1" />
+
+    <include layout="@layout/layout_statistics_body"
         android:id="@+id/tableRow1"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/statistics_Name"
-            android:layout_width="80dp"
-            android:layout_weight="1"
-            android:text="@string/statistics_Name"
-            android:textStyle="bold"></TextView>
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/ranking_Position"
-            android:layout_width="80dp"
-            android:layout_weight="1"
-            android:text="@string/ranking_Position"
-            android:textStyle="bold"></TextView>
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/won_Times"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:text="@string/won_Times"
-            android:textStyle="bold"></TextView>
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/lost_Times"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:text="@string/lost_Times"
-            android:textStyle="bold"></TextView>
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/higher_Score"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/higher_Score"
-            android:textStyle="bold"></TextView>
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/time_Move"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/time_Move"
-            android:textStyle="bold"></TextView>
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/average_Time"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/average_Time"
-            android:textStyle="bold"></TextView>
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-    </TableRow>
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp" android:background="#000000"/>
-
-    <TableRow
-        android:id="@+id/tableRow2"
+        android:layout_weight="1" />
+    <include layout="@layout/layout_statistics_body"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/statistic_playerName"
-            android:layout_width="80dp"
-            android:layout_weight="1"
-            android:text="@string/statistic_playerName"></TextView>
-
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/first_RankingSlot"
-            android:layout_width="80dp"
-            android:layout_weight="1"
-            android:text="@string/first_RankingSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/first_WinSlot"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:text="@string/first_WinSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/first_LoseSlot"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:text="@string/first_LoseSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/first_HsSlot"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/first_HsSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/first_timeMakeMove"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/first_timeMakeMove"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/first_timeWSlot"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/first_timeWSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-
-    </TableRow>
-
-
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp" android:background="#000000"/>
-
-    <TableRow
-        android:id="@+id/tableRow3"
+        android:layout_weight="1" />
+    <include layout="@layout/layout_statistics_body"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/statistic_playerName2"
-            android:layout_width="80dp"
-            android:layout_weight="1"
-            android:text="@string/statistic_playerName2"></TextView>
-
-        <View android:layout_width="1dp"
-            android:layout_height="match_parent" android:background="#000000"/>
-
-        <TextView
-            android:id="@+id/second_RankingSlot"
-            android:layout_width="80dp"
-            android:layout_weight="1"
-            android:text="@string/second_RankingSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/second_WinSlot"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:text="@string/second_WinSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/second_LoseSlot"
-            android:layout_width="40dp"
-            android:layout_weight="1"
-            android:text="@string/second_LoseSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/second_HsSlot"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/second_HsSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/second_timeMakeMove"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/second_timeMakeMove"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />
-
-        <TextView
-            android:id="@+id/second_timeWSlot"
-            android:layout_width="100dp"
-            android:layout_weight="1"
-            android:text="@string/second_timeWSlot"></TextView>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000000" />.
-
-    </TableRow>
-
-    <View
+        android:layout_weight="1" />
+    <include layout="@layout/layout_statistics_body"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000" />
+        android:layout_weight="1" />
+    <include layout="@layout/layout_statistics_body"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1" />
 
 
 </TableLayout>

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.teamhawk.sunka.R;
+import com.teamhawk.sunka.logic.Player;
+import com.teamhawk.sunka.logic.Statistics;
 
 /**
  * Created by mikey on 12/11/2015.
@@ -19,8 +21,26 @@ public class StatisticsFragment extends Fragment {
                                 Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_statistics, container, false);
 
-        TextView names1 = (TextView) rootView.findViewById(R.id.statistic_playerName);
-        TextView names2 = (TextView) rootView.findViewById(R.id.statistic_playerName2);
+        Statistics stat = new Statistics(getContext());
+        stat.open();
+        for(Player player : stat.getEntries()) {
+            TextView textView_playerName = (TextView)rootView.findViewById(R.id.tableRow1).findViewById(R.id.statistic_playerName);
+            textView_playerName.setText(player.getPlayerName());
+            TextView textView_rank = (TextView)rootView.findViewById(R.id.tableRow1).findViewById(R.id.first_RankingSlot);
+
+            TextView textView_wins = (TextView)rootView.findViewById(R.id.tableRow1).findViewById(R.id.first_WinSlot);
+            textView_wins.setText(player.getGamesWon());
+            TextView textView_losses = (TextView)rootView.findViewById(R.id.tableRow1).findViewById(R.id.first_LoseSlot);
+            textView_losses.setText(player.getGamesLost());
+            TextView textView_highScore = (TextView)rootView.findViewById(R.id.tableRow1).findViewById(R.id.first_HsSlot);
+            textView_highScore.setText(player.getHighScore());
+            TextView textView_moveTime = (TextView)rootView.findViewById(R.id.tableRow1).findViewById(R.id.first_timeMakeMove);
+            textView_moveTime.setText(player.getAverageMoveTime());
+            TextView textView_gameTime = (TextView)rootView.findViewById(R.id.tableRow1).findViewById(R.id.first_timeWSlot);
+            textView_gameTime.setText(player.getAverageGameTime());
+       }
+
+
 
         return rootView;
 

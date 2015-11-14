@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/statistics_Name"
+            android:layout_width="80dp"
+            android:layout_weight="1"
+            android:text="@string/statistics_Name"
+            android:textStyle="bold"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/ranking_Position"
+            android:layout_width="80dp"
+            android:layout_weight="1"
+            android:text="@string/ranking_Position"
+            android:textStyle="bold"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/won_Times"
+            android:layout_width="40dp"
+            android:layout_weight="1"
+            android:text="@string/won_Times"
+            android:textStyle="bold"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/lost_Times"
+            android:layout_width="40dp"
+            android:layout_weight="1"
+            android:text="@string/lost_Times"
+            android:textStyle="bold"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/higher_Score"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:text="@string/higher_Score"
+            android:textStyle="bold"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/time_Move"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:text="@string/time_Move"
+            android:textStyle="bold"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/average_Time"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:text="@string/average_Time"
+            android:textStyle="bold"></TextView>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+    </TableRow>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+</LinearLayout>

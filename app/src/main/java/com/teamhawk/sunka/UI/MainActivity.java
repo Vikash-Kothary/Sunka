@@ -1,12 +1,12 @@
 package com.teamhawk.sunka.ui;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +16,7 @@ import com.teamhawk.sunka.logic.Board;
 import com.teamhawk.sunka.logic.Game;
 import com.teamhawk.sunka.logic.Player;
 import com.teamhawk.sunka.logic.Slot;
+import com.teamhawk.sunka.logic.Statistics;
 
 import java.util.HashMap;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "com.teamhawk.sunka.log";
     public static ImageView imageCoin;
     public Game game;
-//    Chronometer chrom1;
+    //    Chronometer chrom1;
 //    Chronometer chrom2;
 //    long elapsedTime1 = 0;
 //    long elapsedTime2 = 0;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 //    Player player1;
 //    Player player2;
     private Board slots;
-//    private HashMap<ImageButton, Slot> buttonToSlot;
+    //    private HashMap<ImageButton, Slot> buttonToSlot;
     private HashMap<Button, Slot> buttonToSlot;
 
     @Override
@@ -45,26 +46,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String name = getIntent().getStringExtra(Game.PLAYER1);
-        Player player1 = new Player(name);
-
-        Player player2;
-        if (getIntent().hasExtra(Game.PLAYER2)) {
-            name = getIntent().getStringExtra(Game.PLAYER2);
-            player2 = new Player(name);
-        } else {
-            player2 = new AIPlayer();
-        }
-
         TextView textView_player1 = (TextView) findViewById(R.id.player1_Text);
         TextView textView_player2 = (TextView) findViewById(R.id.player2_Text);
-
-        textView_player1.setText(player1.getPlayerName());
-        textView_player2.setText(player2.getPlayerName());
-
-//        chrom1 = (Chronometer) findViewById(R.id.chronometer1);
-//        chrom2 = (Chronometer) findViewById(R.id.chronometer2);
-
+        final Button[] buttons = {
+                (Button) findViewById(R.id.p1_h),
+                (Button) findViewById(R.id.p1_0),
+                (Button) findViewById(R.id.p1_1),
+                (Button) findViewById(R.id.p1_2),
+                (Button) findViewById(R.id.p1_3),
+                (Button) findViewById(R.id.p1_4),
+                (Button) findViewById(R.id.p1_5),
+                (Button) findViewById(R.id.p1_6),
+                (Button) findViewById(R.id.p2_h),
+                (Button) findViewById(R.id.p2_6),
+                (Button) findViewById(R.id.p2_5),
+                (Button) findViewById(R.id.p2_4),
+                (Button) findViewById(R.id.p2_3),
+                (Button) findViewById(R.id.p2_2),
+                (Button) findViewById(R.id.p2_1),
+                (Button) findViewById(R.id.p2_0)
+        };
 //        ImageButton[] buttons = {
 //                (ImageButton) findViewById(R.id.p1_h),
 //                (ImageButton) findViewById(R.id.p1_0),
@@ -84,45 +85,67 @@ public class MainActivity extends AppCompatActivity {
 //                (ImageButton) findViewById(R.id.p2_0)
 //        };
 
-        final Button[] buttons = {
-                (Button) findViewById(R.id.p1_h),
-                (Button) findViewById(R.id.p1_0),
-                (Button) findViewById(R.id.p1_1),
-                (Button) findViewById(R.id.p1_2),
-                (Button) findViewById(R.id.p1_3),
-                (Button) findViewById(R.id.p1_4),
-                (Button) findViewById(R.id.p1_5),
-                (Button) findViewById(R.id.p1_6),
-                (Button) findViewById(R.id.p2_h),
-                (Button) findViewById(R.id.p2_6),
-                (Button) findViewById(R.id.p2_5),
-                (Button) findViewById(R.id.p2_4),
-                (Button) findViewById(R.id.p2_3),
-                (Button) findViewById(R.id.p2_2),
-                (Button) findViewById(R.id.p2_1),
-                (Button) findViewById(R.id.p2_0)
-        };
+//        chrom1 = (Chronometer) findViewById(R.id.chronometer1);
+//        chrom2 = (Chronometer) findViewById(R.id.chronometer2);
 
-        if(game==null){
+        if (savedInstanceState != null && savedInstanceState.containsKey(GameSaveState.KEY)) {
+            Log.e(TAG, "Resume");
+            game = ((GameSaveState) savedInstanceState.getParcelable(GameSaveState.KEY)).getGame();
+
+            textView_player1.setText(game.getPlayer1().getPlayerName());
+            textView_player2.setText(game.getPlayer2().getPlayerName());
+        } else {
+
+
+            String name = getIntent().getStringExtra(Game.PLAYER1);
+            Player player1 = new Player(name);
+
+            Player player2;
+            if (getIntent().hasExtra(Game.PLAYER2)) {
+                name = getIntent().getStringExtra(Game.PLAYER2);
+                player2 = new Player(name);
+            } else {
+                player2 = new AIPlayer();
+            }
+
+            textView_player1.setText(player1.getPlayerName());
+            textView_player2.setText(player2.getPlayerName());
+
             game = new Game(new Board(player1, player2));
-            Slot[] slots = game.getBoard().getSlots();
+//        Dialog dialog = new Dialog(this);
+//        dialog.setContentView(R.layout.dialog_game_overt);
+//        dialog.setTitle("The winner is:");
+//        dialog.setCancelable(true);
+//        dialog.show();
 
-            buttonToSlot = new HashMap<>();
+        }
+        Slot[] slots = game.getBoard().getSlots();
 
-            for (int i = 0; i < buttons.length; i++) {
-                buttonToSlot.put(buttons[i], slots[i]);
+        buttonToSlot = new HashMap<>();
+
+        for (int i = 0; i < buttons.length; i++) {
+            buttonToSlot.put(buttons[i], slots[i]);
             buttons[i].setText(Integer.toString(slots[i].getBallCount()));
-                buttons[i].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        game.turn(buttonToSlot.get(v));
+            buttons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    game.turn(buttonToSlot.get(v));
                     for (int i = 0; i < buttons.length; i++) {
                         buttons[i].setText(Integer.toString(game.getBoard().getSlots()[i].getBallCount()));
 //                        timerCode(v, buttons);
                     }
+                    String winner = game.checkWinner();
+                    if(winner!=null){
+                        if(winner!="tie"){
+                            Statistics stats = new Statistics(getApplicationContext());
+                            stats.open();
+                            stats.createEntry(game.getPlayer(winner));
+                            stats.close();
+                        }
+
                     }
-                });
-            }
+                }
+            });
         }
 
         //       int density = (int) getResources().getDisplayMetrics().density;
@@ -131,7 +154,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    @Override
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(GameSaveState.KEY, new GameSaveState(game));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        onSaveInstanceState(new Bundle());
+    }
+
+    //    @Override
 //    public void onWindowFocusChanged(boolean loaded) {
 //        super.onWindowFocusChanged(loaded);
 //        if (loaded) {
@@ -231,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
 //                                           @Override
 //                                           public void onClick(View v) {
 //                                               Dialog dialog = new Dialog(MainActivity.this);
-//                                               dialog.setContentView(R.layout.dialog_layout);
+//                                               dialog.setContentView(R.layout.dialog_game_overt);
 //                                               dialog.setTitle("The winner is:");
 //                                               dialog.setCancelable(true);
 //
@@ -281,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
 //        );
 
 
-    }
+}
 
 //    public void timerCode(View v, Button[] buttons) {
 //        for (int x = 0; x <= 6; x++) {
@@ -331,8 +366,8 @@ public class MainActivity extends AppCompatActivity {
 
 //    }
 
-    //Not used
-    //Registers when a button is clicked 'changed'
+//Not used
+//Registers when a button is clicked 'changed'
 //    public void clicked(View view){
 //
 //        int id = view.getId();

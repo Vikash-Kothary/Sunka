@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/statistic_playerName"
+            android:layout_width="80dp"
+            android:layout_weight="1"
+            android:text="@string/statistic_playerName"></TextView>
+
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent" android:background="#000000"/>
+
+        <TextView
+            android:id="@+id/first_RankingSlot"
+            android:layout_width="80dp"
+            android:layout_weight="1"
+            android:text="@string/first_RankingSlot"></TextView>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/first_WinSlot"
+            android:layout_width="40dp"
+            android:layout_weight="1"
+            android:text="@string/first_WinSlot"></TextView>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/first_LoseSlot"
+            android:layout_width="40dp"
+            android:layout_weight="1"
+            android:text="@string/first_LoseSlot"></TextView>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/first_HsSlot"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:text="@string/first_HsSlot"></TextView>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/first_timeMakeMove"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:text="@string/first_timeMakeMove"></TextView>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/first_timeWSlot"
+            android:layout_width="100dp"
+            android:layout_weight="1"
+            android:text="@string/first_timeWSlot"></TextView>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+
+    </TableRow>
+
+
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#000000"/>
+
+
+</LinearLayout>

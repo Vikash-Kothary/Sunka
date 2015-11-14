@@ -2,11 +2,13 @@ package com.teamhawk.sunka.logic;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.graphics.Point;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -75,6 +77,7 @@ public class Statistics {
     }
 
     public long createEntry(Player player){
+        deleteEntry(player.getPlayerName());
         ContentValues cv = new ContentValues();
         cv.put(KEY_PLAYERNAME, player.getPlayerName());
         cv.put(KEY_WIN, player.getGamesWon());
@@ -84,5 +87,23 @@ public class Statistics {
         cv.put(KEY_AT, player.getAverageMoveTime());
         cv.put(KEY_ATT, player.getAverageGameTime());
         return mDatabase.insert(DATABASE_TABLE, null, cv);
+    }
+
+    public Player[] getEntries() {
+        String[] columns = {KEY_PLAYERNAME, KEY_WIN, KEY_LOSE, KEY_DRAW, KEY_HS, KEY_AT, KEY_ATT};
+        Cursor c = mDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
+        ArrayList<Player> entryList = new ArrayList<>();
+        for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
+            Player player = new Player(null);
+
+            entryList.add(player);
+        }
+        Player[] entries = new Player[entryList.size()];
+        for (int i=0;i<entryList.size();i++) entries[i] = entryList.get(i);
+        return entries;
+    }
+
+    public void deleteEntry(String playerName){
+        mDatabase.execSQL("DELETE FROM " + DATABASE_TABLE + " WHERE " + KEY_PLAYERNAME + "=\"" + playerName + "\";");
     }
 }
