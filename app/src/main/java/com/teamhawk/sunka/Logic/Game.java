@@ -200,11 +200,13 @@ public class Game {
             int p1Ct = board.get(0).getBallCount();
             int p2Ct = board.get(8).getBallCount();
             if (p1Ct > p2Ct) {
+                System.out.println(player1.getPlayerName()); // Do stuff here for P1 win
+
                 return player1.getPlayerName();
-                //System.out.println("p1 won"); Do stuff here for P1 win
             } else if (p2Ct > p1Ct) {
+                System.out.println(player2.getPlayerName()); //Do stuff here for P2 win
+
                 return player2.getPlayerName();
-                // System.out.println("p2 won"); Do stuff here for P2 win
             } else return "tie"; //DO stuff here for tie
         }
         return null;
@@ -254,7 +256,7 @@ public class Game {
         chrom2.setText(currentTime2);
         activity2 = true;
 
-        System.out.println("button below triggerTimePlayer2 trigger chrom1 currentTime2:"+currentTime2);
+       // System.out.println("button below triggerTimePlayer2 trigger chrom1 currentTime2:"+currentTime2);
 
         if (!activity1&&elapsedTime1==0) {
 
@@ -276,7 +278,7 @@ public class Game {
         chrom1.setText(currentTime1);
         activity1 = true;
 
-        System.out.println("button above triggerTimePlayer1 trigger chrom2 currentTime1:"+currentTime1);
+      //  System.out.println("button above triggerTimePlayer1 trigger chrom2 currentTime1:"+currentTime1);
 
         if (!activity2&&elapsedTime2==0) {
 
@@ -308,8 +310,8 @@ public class Game {
                     chronometer.setText(currentTime1);
                     elapsedTime1 = SystemClock.elapsedRealtime();
 
-                    System.out.println("Activity 1 !false , elapsedTime1, "+elapsedTime1);
-                    System.out.println("Activity 1 !false , currentTime1, "+currentTime1);
+                 //   System.out.println("Activity 1 !false , elapsedTime1, "+elapsedTime1);
+                 //   System.out.println("Activity 1 !false , currentTime1, "+currentTime1);
 
 
                 } else {
@@ -319,8 +321,8 @@ public class Game {
                     chronometer.setText(currentTime1);
                     elapsedTime1 = elapsedTime1 + 1000;
 
-                    System.out.println("Activity 1 else , elapsedTime1, " + elapsedTime1);
-                    System.out.println("Activity 1 else , currentTime1, "+currentTime1);
+                  //  System.out.println("Activity 1 else , elapsedTime1, " + elapsedTime1);
+                  //  System.out.println("Activity 1 else , currentTime1, "+currentTime1);
 
 
                 }
@@ -343,8 +345,8 @@ public class Game {
                     chronometer2.setText(currentTime2);
                     elapsedTime2 = SystemClock.elapsedRealtime();
 
-                    System.out.println("Activity 2 !false , elapsedTime2, " + elapsedTime2);
-                    System.out.println("Activity 2 !false , currentTime2, " + currentTime2);
+                  //  System.out.println("Activity 2 !false , elapsedTime2, " + elapsedTime2);
+                   // System.out.println("Activity 2 !false , currentTime2, " + currentTime2);
 
 
                 } else {
@@ -354,8 +356,8 @@ public class Game {
                     chronometer2.setText(currentTime2);
                     elapsedTime2 = elapsedTime2 + 1000;
 
-                    System.out.println("Activity 2 else , elapsedTime2, " + elapsedTime2);
-                    System.out.println("Activity 2 else , currentTime2, " + currentTime2);
+                  //  System.out.println("Activity 2 else , elapsedTime2, " + elapsedTime2);
+                 //   System.out.println("Activity 2 else , currentTime2, " + currentTime2);
 
 
                 }

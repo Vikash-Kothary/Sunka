@@ -1,6 +1,7 @@
 package com.teamhawk.sunka.ui;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public Game game;
         Chronometer chrom1;
     Chronometer chrom2;
+    String winner;
 
 //    String player1Name;
 //    String player2Name;
@@ -142,9 +144,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-
-
-                    String winner = game.checkWinner();
+                    winner = game.checkWinner();
                     if(winner!=null){
                         if(winner!="tie"){
                             Statistics stats = new Statistics(getApplicationContext());
@@ -152,14 +152,58 @@ public class MainActivity extends AppCompatActivity {
                             stats.createEntry(game.getPlayer(winner));
                             stats.close();
 
-//                            Dialog dialog = new Dialog(getApplicationContext());
-//                            dialog.setContentView(R.layout.dialog_game_over);
-//                            dialog.setTitle("The winner is:");
-//                            dialog.setCancelable(true);
-//                            dialog.show();
+                            Dialog dialog = new Dialog(MainActivity.this);
+                            dialog.setContentView(R.layout.dialog_game_over);
+                            dialog.setTitle("OPTIONS");
+
+                            dialog.setCancelable(true);
+                            TextView text = (TextView) dialog.findViewById(R.id.dialog_Winner);
+                            text.setText(winner);
+
+                            Button exitButton = (Button) dialog.findViewById(R.id.exit_Option);
+                            exitButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+/*
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+*/                                  finish();
+                                    Intent intent = new Intent(MainActivity.this, MenuFragment.class);
+                                    startActivity(intent);
+
+                                }
+                            });
+
+                            Button rematchButton = (Button) dialog.findViewById(R.id.rematch_Option);
+                            rematchButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    game.rematch();
+                                    finish();
+                                }
+                            });
+
+                            Button statisticsButton = (Button) dialog.findViewById(R.id.statistics_Option);
+                            statisticsButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent button_Intent = new Intent(getApplicationContext(), StatisticsFragment.class);
+                                    startActivity(button_Intent);
+                                }
+                            });
+
+
+
+
+                            dialog.show();
                         }
                     }
-                }
+                        }
+
+
             });
         }
 
@@ -227,59 +271,6 @@ public class MainActivity extends AppCompatActivity {
 //            coinView1.addView(coinImage);
 //        }
 //    }
-//        chrom1.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-//            @Override
-//            public void onChronometerTick(Chronometer chronometer) {
-//
-//
-//                if (!activity1) {
-//
-//                    long minutes = ((SystemClock.elapsedRealtime() - chrom1.getBase()) / 1000) / 60;
-//                    long seconds = ((SystemClock.elapsedRealtime() - chrom1.getBase()) / 1000) % 60;
-//                    currentTime1 = minutes + ":" + seconds;
-//                    chronometer.setText(currentTime1);
-//                    elapsedTime1 = SystemClock.elapsedRealtime();
-//
-//                } else {
-//                    long minutes = ((elapsedTime1 - chrom1.getBase()) / 1000) / 60;
-//                    long seconds = ((elapsedTime1 - chrom1.getBase()) / 1000) % 60;
-//                    currentTime1 = minutes + ":" + seconds;
-//                    chronometer.setText(currentTime1);
-//                    elapsedTime1 = elapsedTime1 + 1000;
-//
-//
-//                }
-//
-//            }
-//
-//        });
-//
-//        chrom2.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-//            @Override
-//            public void onChronometerTick(Chronometer chronometer2) {
-//
-//
-//                if (!activity2) {
-//
-//                    long minutes = ((SystemClock.elapsedRealtime() - chrom2.getBase()) / 1000) / 60;
-//                    long seconds = ((SystemClock.elapsedRealtime() - chrom2.getBase()) / 1000) % 60;
-//                    currentTime2 = minutes + ":" + seconds;
-//                    chronometer2.setText(currentTime2);
-//                    elapsedTime2 = SystemClock.elapsedRealtime();
-//
-//                } else {
-//                    long minutes = ((elapsedTime2 - chrom2.getBase()) / 1000) / 60;
-//                    long seconds = ((elapsedTime2 - chrom2.getBase()) / 1000) % 60;
-//                    currentTime2 = minutes + ":" + seconds;
-//                    chronometer2.setText(currentTime2);
-//                    elapsedTime2 = elapsedTime2 + 1000;
-//
-//
-//                }
-//
-//
-//            }
-//        });
 //        Button button1main = (Button) findViewById(R.id.options_Button);
 //        button1main.setOnClickListener(new View.OnClickListener(){
 //                                           @Override
@@ -336,54 +327,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-
-//    public void timerCode(View v, Button[] buttons) {
-//        for (int x = 0; x <= 6; x++) {
-//
-//            if (v == buttons[x]) {
-//                player1ButtonClicked++;
-//
-//                player1.setButtonClicked(player1ButtonClicked);
-//                chrom2.stop();
-//                chrom2.setText(currentTime2);
-//                activity2 = true;
-//
-//                if (!activity1) {
-//                    chrom1.setBase(SystemClock.elapsedRealtime());
-//                    chrom1.start();
-//                } else {
-//
-//                    chrom1.start();
-//                }
-//            }
-//
-//
-//        }
-//        for (int y = 9; y <= 15; y++) {
-//
-//            if (v == buttons[y]) {
-//
-//                player2ButtonClicked++;
-//
-//                player2.setButtonClicked(player2ButtonClicked);
-//
-//                chrom1.stop();
-//                chrom1.setText(currentTime1);
-//                activity1 = true;
-//
-//                if (!activity2) {
-//                    chrom2.setBase(SystemClock.elapsedRealtime());
-//                    chrom2.start();
-//                } else {
-//
-//                    chrom2.start();
-//                }
-//
-//
-//            }
-//        }
-
-//    }
 
 //Not used
 //Registers when a button is clicked 'changed'
