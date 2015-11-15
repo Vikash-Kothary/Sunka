@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.os.SystemClock;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,14 +27,9 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "com.teamhawk.sunka.log";
     public static ImageView imageCoin;
     public Game game;
-    //    Chronometer chrom1;
-//    Chronometer chrom2;
-//    long elapsedTime1 = 0;
-//    long elapsedTime2 = 0;
-//    String currentTime1 = "";
-//    String currentTime2 = "";
-//    boolean activity1 = false;
-//    boolean activity2 = false;
+        Chronometer chrom1;
+    Chronometer chrom2;
+
 //    String player1Name;
 //    String player2Name;
 //    Player player1;
@@ -85,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
 //                (ImageButton) findViewById(R.id.p2_0)
 //        };
 
-//        chrom1 = (Chronometer) findViewById(R.id.chronometer1);
-//        chrom2 = (Chronometer) findViewById(R.id.chronometer2);
+       chrom1 = (Chronometer) findViewById(R.id.chronometer1);
+       chrom2 = (Chronometer) findViewById(R.id.chronometer2);
 
         if (savedInstanceState != null && savedInstanceState.containsKey(GameSaveState.KEY)) {
             game = ((GameSaveState) savedInstanceState.getParcelable(GameSaveState.KEY)).getGame();
@@ -128,6 +125,25 @@ public class MainActivity extends AppCompatActivity {
                         buttons[i].setText(Integer.toString(game.getBoard().getSlots()[i].getBallCount()));
 //                        timerCode(v, buttons);
                     }
+
+
+                    for (int x = 1; x <= 7; x++) {
+                        if (v == buttons[x]) {
+                         //  player1ButtonClicked++;
+                          //  player1.setButtonClicked(player1ButtonClicked);
+                            game.triggerTimePlayer2(chrom1, chrom2);
+                        }
+                    }
+                    for (int y = 9; y <= 15; y++) {
+                        if (v == buttons[y]) {
+                       //   player2ButtonClicked++;
+                         //   player2.setButtonClicked(player2ButtonClicked);
+                            game.triggerTimePlayer1(chrom1, chrom2);
+                        }
+                    }
+
+
+
                     String winner = game.checkWinner();
                     if(winner!=null){
                         if(winner!="tie"){
@@ -146,6 +162,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+        game.setTimeChrom1(chrom1);
+
+        game.setTimeChrom2(chrom2);
 
         //       int density = (int) getResources().getDisplayMetrics().density;
         //         Log.d("dpi", "" + density);

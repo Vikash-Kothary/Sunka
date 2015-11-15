@@ -1,6 +1,8 @@
 package com.teamhawk.sunka.logic;
 
 import android.util.Log;
+import android.widget.Chronometer;
+import android.os.SystemClock;
 
 import com.teamhawk.sunka.ui.MainActivity;
 
@@ -19,7 +21,14 @@ public class Game {
     private boolean turn, anotherTurn, firstTurn;
     private int ballsInPlay, player1Balls, player2Balls, shellsLeft1, shellsLeft2;
     private Slot nextSlot1, nextSlot2, targetSlot1, targetSlot2;
-
+    Chronometer chrom1;
+    Chronometer chrom2;
+    long elapsedTime1 = 0;
+    long elapsedTime2 = 0;
+    String currentTime1 = "";
+    String currentTime2 = "";
+    Boolean activity1 = false;
+    Boolean activity2 = false;
 
     //Not used
 //    public Game(Board board, Player player1, Player player2){
@@ -232,5 +241,132 @@ public class Game {
     public void rematch() {
         this.board = new Board(player1, player2);
         init();
+    }
+
+
+
+    //heavy code for the Chronometer
+
+    public void triggerTimePlayer2(Chronometer chrom1f, Chronometer chrom2f){
+        this.chrom1 = chrom1f;
+        this.chrom2 = chrom2f;
+        chrom2.stop();
+        chrom2.setText(currentTime2);
+        activity2 = true;
+
+        System.out.println("button below triggerTimePlayer2 trigger chrom1 currentTime2:"+currentTime2);
+
+        if (!activity1&&elapsedTime1==0) {
+
+            chrom1.setBase(SystemClock.elapsedRealtime());
+            chrom1.start();
+            activity2 = false;
+
+        } else {
+
+            chrom1.start();
+        }
+    }
+
+
+    public void triggerTimePlayer1(Chronometer chrom1f, Chronometer chrom2f){
+        this.chrom1 = chrom1f;
+        this.chrom2 = chrom2f;
+        chrom1.stop();
+        chrom1.setText(currentTime1);
+        activity1 = true;
+
+        System.out.println("button above triggerTimePlayer1 trigger chrom2 currentTime1:"+currentTime1);
+
+        if (!activity2&&elapsedTime2==0) {
+
+
+            chrom2.setBase(SystemClock.elapsedRealtime());
+            chrom2.start();
+            activity1 = false;
+
+        } else {
+
+            chrom2.start();
+        }
+    }
+
+
+    public void setTimeChrom1(Chronometer chrom1f){
+
+        this.chrom1 = chrom1f;
+        chrom1.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+
+
+                if (!activity1) {
+
+                    long minutes = ((SystemClock.elapsedRealtime() - chrom1.getBase()) / 1000) / 60;
+                    long seconds = ((SystemClock.elapsedRealtime() - chrom1.getBase()) / 1000) % 60;
+                    currentTime1 = minutes + ":" + seconds;
+                    chronometer.setText(currentTime1);
+                    elapsedTime1 = SystemClock.elapsedRealtime();
+
+                    System.out.println("Activity 1 !false , elapsedTime1, "+elapsedTime1);
+                    System.out.println("Activity 1 !false , currentTime1, "+currentTime1);
+
+
+                } else {
+                    long minutes = ((elapsedTime1 - chrom1.getBase()) / 1000) / 60;
+                    long seconds = ((elapsedTime1 - chrom1.getBase()) / 1000) % 60;
+                    currentTime1 = minutes + ":" + seconds;
+                    chronometer.setText(currentTime1);
+                    elapsedTime1 = elapsedTime1 + 1000;
+
+                    System.out.println("Activity 1 else , elapsedTime1, " + elapsedTime1);
+                    System.out.println("Activity 1 else , currentTime1, "+currentTime1);
+
+
+                }
+
+            }
+
+        });
+    }
+    public void setTimeChrom2(Chronometer chrom2f){
+        this.chrom2 = chrom2f;
+
+        chrom2.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer2) {
+                if (!activity2) {
+
+                    long minutes = ((SystemClock.elapsedRealtime() - chrom2.getBase()) / 1000) / 60;
+                    long seconds = ((SystemClock.elapsedRealtime() - chrom2.getBase()) / 1000) % 60;
+                    currentTime2 = minutes + ":" + seconds;
+                    chronometer2.setText(currentTime2);
+                    elapsedTime2 = SystemClock.elapsedRealtime();
+
+                    System.out.println("Activity 2 !false , elapsedTime2, " + elapsedTime2);
+                    System.out.println("Activity 2 !false , currentTime2, " + currentTime2);
+
+
+                } else {
+                    long minutes = ((elapsedTime2 - chrom2.getBase()) / 1000) / 60;
+                    long seconds = ((elapsedTime2 - chrom2.getBase()) / 1000) % 60;
+                    currentTime2 = minutes + ":" + seconds;
+                    chronometer2.setText(currentTime2);
+                    elapsedTime2 = elapsedTime2 + 1000;
+
+                    System.out.println("Activity 2 else , elapsedTime2, " + elapsedTime2);
+                    System.out.println("Activity 2 else , currentTime2, " + currentTime2);
+
+
+                }
+
+
+            }
+        });
+
+
+
+
+
     }
 }
