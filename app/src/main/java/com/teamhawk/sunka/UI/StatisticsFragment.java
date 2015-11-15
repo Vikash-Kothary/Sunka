@@ -21,6 +21,8 @@ public class StatisticsFragment extends Fragment {
                                 Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_statistics, container, false);
 
+
+
         Statistics stat = new Statistics(getContext());
         stat.open();
         for(Player player : stat.getEntries()) {
@@ -40,7 +42,7 @@ public class StatisticsFragment extends Fragment {
             textView_gameTime.setText(player.getAverageGameTime());
        }
 
-
+stat.close();
 
         return rootView;
 

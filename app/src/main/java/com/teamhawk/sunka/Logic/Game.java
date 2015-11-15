@@ -30,6 +30,7 @@ public class Game {
     Boolean activity1 = false;
     Boolean activity2 = false;
 
+
     //Not used
 //    public Game(Board board, Player player1, Player player2){
 //        this.board = board;
@@ -143,6 +144,10 @@ public class Game {
         }
     }
 
+
+
+
+
     public void turn(Slot slot) {
         if(firstTurn){
             firstTurnLogic(slot);
@@ -163,7 +168,7 @@ public class Game {
                 player2Balls = 0;
 
                 //If there are no balls in play determine the winner
-                if (checkWinner() != null) {
+              /*  if (checkWinner() != null) {
 
                     //Game is over, create delay then exit
                     try {
@@ -172,7 +177,9 @@ public class Game {
                         Thread.currentThread().interrupt();
                     }
                     System.exit(0);
-                }
+                }*/
+                checkWinner();
+
                 //System.out.println("in play: " + ballsInPlay + " p1: " + player1Balls + " p2: " + player2Balls);
 
                 //Update who's next
@@ -180,7 +187,28 @@ public class Game {
             }
         }
     }
+    public String checkWinner() {
+        if (checkBalls(board.get(1)) == true) {
+            int p1Ct = board.get(0).getBallCount();
+            int p2Ct = board.get(8).getBallCount();
 
+            if (p1Ct > p2Ct) {
+                System.out.println(player1.getPlayerName()); // Do stuff here for P1 win
+
+                return player1.getPlayerName();
+            } else if (p2Ct > p1Ct) {
+                System.out.println(player2.getPlayerName()); //Do stuff here for P2 win
+
+                return player2.getPlayerName();
+            } else return "tie"; //DO stuff here for tie
+        }
+
+        return null;
+    }
+
+    public void exitGame(){
+        System.exit(0);
+    }
     //Check the status of the balls in the game
     private boolean checkBalls(Slot slot) {
         int ID = slot.getId();
@@ -195,22 +223,7 @@ public class Game {
         return ballsInPlay == 0;
     }
 
-    public String checkWinner() {
-        if (checkBalls(board.get(1)) == true) {
-            int p1Ct = board.get(0).getBallCount();
-            int p2Ct = board.get(8).getBallCount();
-            if (p1Ct > p2Ct) {
-                System.out.println(player1.getPlayerName()); // Do stuff here for P1 win
 
-                return player1.getPlayerName();
-            } else if (p2Ct > p1Ct) {
-                System.out.println(player2.getPlayerName()); //Do stuff here for P2 win
-
-                return player2.getPlayerName();
-            } else return "tie"; //DO stuff here for tie
-        }
-        return null;
-    }
 
     public boolean getTurn() {
         return turn;
@@ -269,6 +282,8 @@ public class Game {
             chrom1.start();
         }
     }
+
+
 
 
     public void triggerTimePlayer1(Chronometer chrom1f, Chronometer chrom2f){
@@ -369,6 +384,13 @@ public class Game {
 
 
 
+
+    }
+    public void stopChroms(Chronometer chrom1f, Chronometer chrom2f){
+        this.chrom1 = chrom1f;
+        this.chrom2 = chrom2f;
+        chrom1.stop();
+        chrom2.stop();
 
     }
 }

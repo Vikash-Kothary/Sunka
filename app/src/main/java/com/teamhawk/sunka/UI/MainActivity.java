@@ -1,6 +1,9 @@
 package com.teamhawk.sunka.ui;
 
 import android.app.Dialog;
+import android.support.v4.app.Fragment;
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "com.teamhawk.sunka.log";
     public static ImageView imageCoin;
     public Game game;
-        Chronometer chrom1;
+    Chronometer chrom1;
     Chronometer chrom2;
     String winner;
-
-//    String player1Name;
+    Board board;
+    //    String player1Name;
 //    String player2Name;
 //    Player player1;
 //    Player player2;
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView_player1 = (TextView) findViewById(R.id.player1_Text);
         TextView textView_player2 = (TextView) findViewById(R.id.player2_Text);
+        chrom1 = (Chronometer) findViewById(R.id.chronometer1);
+        chrom2 = (Chronometer) findViewById(R.id.chronometer2);
+
         final Button[] buttons = {
                 (Button) findViewById(R.id.p1_h),
                 (Button) findViewById(R.id.p1_0),
@@ -84,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
 //                (ImageButton) findViewById(R.id.p2_0)
 //        };
 
-       chrom1 = (Chronometer) findViewById(R.id.chronometer1);
-       chrom2 = (Chronometer) findViewById(R.id.chronometer2);
 
         if (savedInstanceState != null && savedInstanceState.containsKey(GameSaveState.KEY)) {
             game = ((GameSaveState) savedInstanceState.getParcelable(GameSaveState.KEY)).getGame();
@@ -109,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
             textView_player1.setText(player1.getPlayerName());
             textView_player2.setText(player2.getPlayerName());
 
-            game = new Game(new Board(player1, player2));
+            board = new Board(player1, player2);
+            game = new Game(board);
 
         }
         Slot[] slots = game.getBoard().getSlots();
@@ -128,30 +133,31 @@ public class MainActivity extends AppCompatActivity {
 //                        timerCode(v, buttons);
                     }
 
-
-                    for (int x = 1; x <= 7; x++) {
-                        if (v == buttons[x]) {
-                         //  player1ButtonClicked++;
-                          //  player1.setButtonClicked(player1ButtonClicked);
-                            game.triggerTimePlayer2(chrom1, chrom2);
+                    if (board.get(0).getBallCount() > 0 ||
+                            board.get(8).getBallCount() > 0) {
+                        for (int x = 1; x <= 7; x++) {
+                            if (v == buttons[x]) {
+                                //  player1ButtonClicked++;
+                                //  player1.setButtonClicked(player1ButtonClicked);
+                                game.triggerTimePlayer2(chrom1, chrom2);
+                            }
+                        }
+                        for (int y = 9; y <= 15; y++) {
+                            if (v == buttons[y]) {
+                                //   player2ButtonClicked++;
+                                //   player2.setButtonClicked(player2ButtonClicked);
+                                game.triggerTimePlayer1(chrom1, chrom2);
+                            }
                         }
                     }
-                    for (int y = 9; y <= 15; y++) {
-                        if (v == buttons[y]) {
-                       //   player2ButtonClicked++;
-                         //   player2.setButtonClicked(player2ButtonClicked);
-                            game.triggerTimePlayer1(chrom1, chrom2);
-                        }
-                    }
-
                     winner = game.checkWinner();
-                    if(winner!=null){
-                        if(winner!="tie"){
+                    if (winner != null) {
+                        if (winner != "tie") {
                             Statistics stats = new Statistics(getApplicationContext());
                             stats.open();
                             stats.createEntry(game.getPlayer(winner));
                             stats.close();
-
+                            game.stopChroms(chrom1, chrom2);
                             Dialog dialog = new Dialog(MainActivity.this);
                             dialog.setContentView(R.layout.dialog_game_over);
                             dialog.setTitle("OPTIONS");
@@ -165,13 +171,9 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
 
-/*
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.addCategory(Intent.CATEGORY_HOME);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-*/                                  finish();
-                                    Intent intent = new Intent(MainActivity.this, MenuFragment.class);
+
+                                    game.exitGame();
+                                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                                     startActivity(intent);
 
                                 }
@@ -182,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     game.rematch();
-                                    finish();
+
                                 }
                             });
 
@@ -190,18 +192,17 @@ public class MainActivity extends AppCompatActivity {
                             statisticsButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    Intent button_Intent = new Intent(getApplicationContext(), StatisticsFragment.class);
-                                    startActivity(button_Intent);
+
+                                    getSupportFragmentManager().beginTransaction()
+                                            .add(R.id.fragment_container, new StatisticsFragment()).commit();
                                 }
                             });
-
-
 
 
                             dialog.show();
                         }
                     }
-                        }
+                }
 
 
             });
@@ -214,6 +215,61 @@ public class MainActivity extends AppCompatActivity {
         //       int density = (int) getResources().getDisplayMetrics().density;
         //         Log.d("dpi", "" + density);
         //           Log.d("Test_cordinates", "" + xforbutton1 + " " + yforbutton1);
+        Button button1main = (Button) findViewById(R.id.options_Button);
+
+        button1main.setOnClickListener(new View.OnClickListener()
+
+                                       {
+                                           @Override
+                                           public void onClick (View v){
+
+                                               Dialog dialog = new Dialog(MainActivity.this);
+                                               dialog.setContentView(R.layout.dialog_game_over);
+                                               dialog.setTitle("OPTIONS");
+                                               dialog.setCancelable(true);
+
+
+                                               Button exitButton = (Button) dialog.findViewById(R.id.exit_Option);
+                                               exitButton.setOnClickListener(new View.OnClickListener() {
+                                                   @Override
+                                                   public void onClick(View v) {
+
+
+                                                       game.exitGame();
+                                                     //  finish();
+                                                       Intent intent2 = new Intent(MainActivity.this, MenuActivity.class);
+                                                       startActivity(intent2);
+
+                                               }
+                                               });
+
+                                               Button rematchButton = (Button) dialog.findViewById(R.id.rematch_Option);
+                                               rematchButton.setOnClickListener(new View.OnClickListener() {
+                                                   @Override
+                                                   public void onClick(View v) {
+
+                                                       game.rematch();
+
+                                                   }
+                                               });
+
+                                               Button statisticsButton = (Button) dialog.findViewById(R.id.statistics_Option);
+                                               statisticsButton.setOnClickListener(new View.OnClickListener() {
+                                                   @Override
+                                                   public void onClick(View v) {
+                                                       getSupportFragmentManager().beginTransaction()
+                                                               .add(R.id.fragment_container, new StatisticsFragment()).commit();
+
+
+                                                   }
+                                               });
+
+
+                                               dialog.show();
+                                           }
+                                       }
+
+        );
 
     }
 
@@ -271,62 +327,11 @@ public class MainActivity extends AppCompatActivity {
 //            coinView1.addView(coinImage);
 //        }
 //    }
-//        Button button1main = (Button) findViewById(R.id.options_Button);
-//        button1main.setOnClickListener(new View.OnClickListener(){
-//                                           @Override
-//                                           public void onClick(View v) {
-//                                               Dialog dialog = new Dialog(MainActivity.this);
-//                                               dialog.setContentView(R.layout.dialog_game_over);
-//                                               dialog.setTitle("The winner is:");
-//                                               dialog.setCancelable(true);
-//
-//                                               TextView text = (TextView) dialog.findViewById(R.id.dialog_Winner);
-//                                               // text.setText(R.string.lots_of_text);
-//
-//                                               Button exitButton = (Button) dialog.findViewById(R.id.exit_Option);
-//                                               exitButton.setOnClickListener(new View.OnClickListener() {
-//                                                   @Override
-//                                                   public void onClick(View v) {
-//
-///*
-//                        Intent intent = new Intent(Intent.ACTION_MAIN);
-//                        intent.addCategory(Intent.CATEGORY_HOME);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        startActivity(intent);
-//*/
-//                                                       Intent intent = new Intent(MainActivity.this, MenuFragment.class);
-//                                                       startActivity(intent);
-//                                                       finish();
-//                                                   }
-//                                               });
-//
-//                                               Button rematchButton = (Button) dialog.findViewById(R.id.rematch_Option);
-//                                               rematchButton.setOnClickListener(new View.OnClickListener() {
-//                                                   @Override
-//                                                   public void onClick(View v) {
-//                                                       game.rematch();
-//                                                       finish();
-//                                                   }
-//                                               });
-//
-//                                               Button statisticsButton = (Button) dialog.findViewById(R.id.statistics_Option);
-//                                               statisticsButton.setOnClickListener(new View.OnClickListener() {
-//                                                   @Override
-//                                                   public void onClick(View v) {
-//                                                       Intent button_Intent = new Intent(getApplicationContext(), StatisticsActivity.class);
-//                                                       startActivity(button_Intent);
-//                                                   }
-//                                               });
-//
-//
-//                                               dialog.show();
-//                                           }
-//                                       }
-//
-//        );
-
 
 }
+
+
+
 
 //Not used
 //Registers when a button is clicked 'changed'

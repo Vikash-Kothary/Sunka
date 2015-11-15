@@ -48,6 +48,8 @@
 
     <string name="Options">Options</string>
     <string name="dialog_Winner"></string>
+    <string name="dialog_WinnerText">WINNER: </string>
+
     <string name="rematch_Option">Rematch</string>
     <string name="statistics_Option">Statistics</string>
     <string name="exit_Option">Exit</string>

@@ -7,12 +7,25 @@
 
 
 
-
+    <TextView android:text="@string/dialog_WinnerText" android:id="@+id/dialog_WinnerText"
+        android:layout_width="wrap_content" android:layout_height="70dp"
+        android:textStyle="bold"
+        android:textSize="35dp"
+        android:layout_above="@+id/rematch_Option"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
         <TextView android:text="@string/dialog_Winner" android:id="@+id/dialog_Winner"
-            android:layout_width="fill_parent" android:layout_height="70dp" android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content" android:layout_height="70dp"
             android:textStyle="bold"
-            android:textColor="#1d4adf" />
+            android:textColor="#1d4adf"
+            android:layout_toRightOf="@id/dialog_WinnerText"
+            android:textAlignment="center"
+            android:textSize="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
 
 
     <Button android:id="@+id/rematch_Option" android:layout_width="fill_parent" android:layout_height="60dp"
