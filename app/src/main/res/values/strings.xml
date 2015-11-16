@@ -53,5 +53,9 @@
     <string name="rematch_Option">Rematch</string>
     <string name="statistics_Option">Statistics</string>
     <string name="exit_Option">Exit</string>
+    <string name="button_host">Host</string>
+    <string name="button_join">Join</string>
+    <string name="submit_join">Join</string>
+    <string name="submit_host">Host</string>
 
 </resources>

@@ -46,6 +46,18 @@ public class Game {
 //        init();
 //    }
 
+    public Game(){
+        this.board=null;
+        this.player1=null;
+        this.player2=null;
+    }
+
+    public void setBoard(Board board){
+        this.board = board;
+        this.player1 = board.player1;
+        this.player2 = board.player2;
+        init();
+    }
     public Game(Board board) {
         this.board = board;
         this.player1 = board.player1;
@@ -230,11 +242,11 @@ public class Game {
     //Check the status of the balls in the game
     private boolean checkBalls(Slot slot) {
         int ID = slot.getId();
-        if (ID != 15) {
+        if (ID != Board.P2_h) {
             int ballsToAdd = slot.getBallCount();
             if (!slot.isHomeSlot()) ballsInPlay += ballsToAdd;
-            if (ID < 7) player1Balls += ballsToAdd;
-            if (ID > 7 && ID < 15) player2Balls += ballsToAdd;
+            if (ID < Board.P1_h) player1Balls += ballsToAdd;
+            if (ID > Board.P1_h && ID < Board.P2_h) player2Balls += ballsToAdd;
             checkBalls(slot.getNext());
         }
         //Return true if there are no balls left in play

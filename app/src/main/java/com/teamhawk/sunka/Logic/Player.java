@@ -18,6 +18,17 @@ public class Player {
 
     private int buttonClicked;
 
+    public Player(){
+        this.playerName = null;
+        gamesWon = 0;
+        gamesLost = 0;
+        gamesDrawn = 0;
+        highScore = 0;
+        averageMoveTimeInSeconds = 0;
+        averageGameTimeInSeconds = 0;
+        movesTaken = 0;
+    }
+
 
     public Player(String name){
         this.playerName = name;
@@ -28,6 +39,17 @@ public class Player {
         averageMoveTimeInSeconds = 0;
         averageGameTimeInSeconds = 0;
         movesTaken = 0;
+    }
+
+    public Player(Player player){
+        this.playerName = player.getPlayerName();
+        gamesWon = player.getGamesWon();
+        gamesLost = player.getGamesLost();
+        gamesDrawn = player.getGamesDrawn();
+        highScore = player.getHighScore();
+        averageMoveTimeInSeconds = player.getAverageMoveTime();
+        averageGameTimeInSeconds = player.getAverageGameTime();
+        movesTaken = player.getMovesTaken();
     }
 
 

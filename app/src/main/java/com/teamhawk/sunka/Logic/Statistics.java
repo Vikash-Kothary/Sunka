@@ -106,7 +106,7 @@ System.out.println(player.getPlayerName());
         Cursor c = mDatabase.query(DATABASE_TABLE, columns, null, null, null, null, null);
         ArrayList<Player> entryList = new ArrayList<>();
         for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
-            Player player = new Player(null);
+            Player player = new Player();
             player.setPlayerName(c.getString(c.getColumnIndex(KEY_PLAYERNAME)));
             player.setGamesWon(c.getInt(c.getColumnIndex(KEY_WIN)));
             player.setGamesLost(c.getInt(c.getColumnIndex(KEY_LOSE)));

@@ -22,12 +22,18 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/submit_Button"
+            android:id="@+id/button_host"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
             android:gravity="center_vertical|center_horizontal"
-            android:text="@string/submit_button"/>
+            android:text="@string/submit_host"/>
+
+        <Button
+            android:id="@+id/button_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/submit_join"/>
 
     </LinearLayout>
 
