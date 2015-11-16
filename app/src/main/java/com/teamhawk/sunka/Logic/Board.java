@@ -7,22 +7,23 @@ import java.util.ArrayList;
  */
 public class Board extends ArrayList<Slot> {
 
-    public static final int P1_1 = 0;
-    public static final int P1_2 = 1;
-    public static final int P1_3 = 2;
-    public static final int P1_4 = 3;
-    public static final int P1_5 = 4;
-    public static final int P1_6 = 5;
-    public static final int P1_7 = 6;
-    public static final int P1_h = 7;
-    public static final int P2_1 = 8;
-    public static final int P2_2 = 9;
-    public static final int P2_3 = 10;
-    public static final int P2_4 = 11;
-    public static final int P2_5 = 12;
-    public static final int P2_6 = 13;
-    public static final int P2_7 = 14;
-    public static final int P2_h = 15;
+    public static final int P1_h = 0;
+    public static final int P1_1 = 1;
+    public static final int P1_2 = 2;
+    public static final int P1_3 = 3;
+    public static final int P1_4 = 4;
+    public static final int P1_5 = 5;
+    public static final int P1_6 = 6;
+    public static final int P1_7 = 7;
+    public static final int P2_h = 8;
+    public static final int P2_7 = 9;
+    public static final int P2_6 = 10;
+    public static final int P2_5 = 11;
+    public static final int P2_4 = 12;
+    public static final int P2_3 = 13;
+    public static final int P2_2 = 14;
+    public static final int P2_1 = 15;
+
     public Player player1, player2, inTurn;
     private boolean anotherTurn;
 
