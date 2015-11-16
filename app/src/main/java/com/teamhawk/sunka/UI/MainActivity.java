@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     Chronometer chrom2;
     String winner;
     Board board;
+    Player player1;
+    Player player2;
+    Statistics stats;
     //    String player1Name;
 //    String player2Name;
 //    Player player1;
@@ -100,9 +103,9 @@ public class MainActivity extends AppCompatActivity {
 
 
             String name = getIntent().getStringExtra(Game.PLAYER1);
-            Player player1 = new Player(name);
+            player1 = new Player(name);
 
-            Player player2;
+
             if (getIntent().hasExtra(Game.PLAYER2)) {
                 name = getIntent().getStringExtra(Game.PLAYER2);
                 player2 = new Player(name);
@@ -133,30 +136,53 @@ public class MainActivity extends AppCompatActivity {
 //                        timerCode(v, buttons);
                     }
 
-                    if (board.get(0).getBallCount() > 0 ||
-                            board.get(8).getBallCount() > 0) {
-                        for (int x = 1; x <= 7; x++) {
-                            if (v == buttons[x]) {
-                                //  player1ButtonClicked++;
-                                //  player1.setButtonClicked(player1ButtonClicked);
-                                game.triggerTimePlayer2(chrom1, chrom2);
+                    if(player2.isAI()){
+
+                        if (board.get(0).getBallCount() > 0 ||
+                                board.get(8).getBallCount() > 0) {
+                            for (int x = 1; x <= 7; x++) {
+                                if (v == buttons[x]) {
+                                    //  player1ButtonClicked++;
+                                    //  player1.setButtonClicked(player1ButtonClicked);
+
+                                    game.aiTrigger(chrom2);
+
+
+                                }
                             }
                         }
-                        for (int y = 9; y <= 15; y++) {
-                            if (v == buttons[y]) {
-                                //   player2ButtonClicked++;
-                                //   player2.setButtonClicked(player2ButtonClicked);
-                                game.triggerTimePlayer1(chrom1, chrom2);
+                    }
+
+
+
+                   else {
+
+                        if (board.get(0).getBallCount() > 0 ||
+                                board.get(8).getBallCount() > 0) {
+                            for (int x = 1; x <= 7; x++) {
+                                if (v == buttons[x]) {
+                                    //  player1ButtonClicked++;
+                                    //  player1.setButtonClicked(player1ButtonClicked);
+                                    game.triggerTimePlayer2(chrom1, chrom2);
+                                }
+                            }
+                            for (int y = 9; y <= 15; y++) {
+                                if (v == buttons[y]) {
+                                    //   player2ButtonClicked++;
+                                    //   player2.setButtonClicked(player2ButtonClicked);
+                                    game.triggerTimePlayer1(chrom1, chrom2);
+                                }
                             }
                         }
+
                     }
                     winner = game.checkWinner();
                     if (winner != null) {
                         if (winner != "tie") {
-                            Statistics stats = new Statistics(getApplicationContext());
-                            stats.open();
-                            stats.createEntry(game.getPlayer(winner));
-                            stats.close();
+
+
+                            game.getDataBase(getApplicationContext());
+
                             game.stopChroms(chrom1, chrom2);
                             Dialog dialog = new Dialog(MainActivity.this);
                             dialog.setContentView(R.layout.dialog_game_over);
@@ -183,7 +209,10 @@ public class MainActivity extends AppCompatActivity {
                             rematchButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    game.rematch();
+                                    game.exitGame();
+                                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                                    startActivity(intent);
+                                    game.getDataBaseUpdate(MainActivity.this);
 
                                 }
                             });
@@ -193,8 +222,20 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
 
+                                    Intent intent = new Intent(MainActivity.this, StatisticsFragment.class);
+                                    startActivity(intent);
+/*
                                     getSupportFragmentManager().beginTransaction()
-                                            .add(R.id.fragment_container, new StatisticsFragment()).commit();
+                                            .replace(android.R.id.content, new StatisticsFragment()).addToBackStack(null)
+                                            .commit();
+*/
+                                    Intent button_Intent = new Intent(getApplicationContext(), StatisticsFragment.class);
+                                    startActivity(button_Intent);
+                                    game.setWinsLoss(player1,player2);
+                                    game.getDataBase(getApplicationContext());
+
+
+
                                 }
                             });
 
@@ -247,8 +288,10 @@ public class MainActivity extends AppCompatActivity {
                                                rematchButton.setOnClickListener(new View.OnClickListener() {
                                                    @Override
                                                    public void onClick(View v) {
-
-                                                       game.rematch();
+                                                       game.exitGame();
+                                                       Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                                                       startActivity(intent);
+                                                       game.getDataBaseUpdate(MainActivity.this);
 
                                                    }
                                                });
@@ -257,12 +300,18 @@ public class MainActivity extends AppCompatActivity {
                                                statisticsButton.setOnClickListener(new View.OnClickListener() {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       getSupportFragmentManager().beginTransaction()
-                                                               .add(R.id.fragment_container, new StatisticsFragment()).commit();
+                                                       Intent button_Intent = new Intent(getApplicationContext(), StatisticsFragment.class);
+                                                       startActivity(button_Intent);
+                                                       game.setWinsLoss(player1,player2);
+                                                       game.getDataBase(getApplicationContext());
+
+
 
 
                                                    }
-                                               });
+
+
+                                           });
 
 
                                                dialog.show();

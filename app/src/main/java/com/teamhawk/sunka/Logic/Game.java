@@ -1,5 +1,6 @@
 package com.teamhawk.sunka.logic;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Chronometer;
 import android.os.SystemClock;
@@ -17,7 +18,8 @@ public class Game {
     public final static String PLAYER2 = "com.teamhawk.sunka.PLAYER2";
 
     private Board board;
-    private Player player1, player2;
+    private Player player1;
+    private Player player2;
     private boolean turn, anotherTurn, firstTurn;
     private int ballsInPlay, player1Balls, player2Balls, shellsLeft1, shellsLeft2;
     private Slot nextSlot1, nextSlot2, targetSlot1, targetSlot2;
@@ -30,6 +32,11 @@ public class Game {
     Boolean activity1 = false;
     Boolean activity2 = false;
 
+
+    private int countWins1;
+    private int countLosses1;
+    private int countWins2;
+    private int countLosses2;
 
     //Not used
 //    public Game(Board board, Player player1, Player player2){
@@ -89,6 +96,9 @@ public class Game {
             //turn = true;
         }
     }
+
+
+
 
     public Board getBoard() {
         return board;
@@ -195,16 +205,24 @@ public class Game {
             if (p1Ct > p2Ct) {
                 System.out.println(player1.getPlayerName()); // Do stuff here for P1 win
 
+                countWins1++;
+                countLosses2++;
+
+
                 return player1.getPlayerName();
             } else if (p2Ct > p1Ct) {
                 System.out.println(player2.getPlayerName()); //Do stuff here for P2 win
-
+                countWins2++;
+                countLosses1++;
                 return player2.getPlayerName();
             } else return "tie"; //DO stuff here for tie
         }
 
         return null;
     }
+
+
+
 
     public void exitGame(){
         System.exit(0);
@@ -259,6 +277,41 @@ public class Game {
     }
 
 
+    public int getCountWins1() {
+        return countWins1;
+    }
+
+
+
+    public int getCountLosses1() {
+        return countLosses1;
+    }
+
+
+    public int getCountWins2() {
+        return countWins2;
+    }
+
+
+    public int getCountLosses2() {
+        return countLosses2;
+    }
+
+   public void setWinsLoss(Player player1, Player player2){
+
+       player1.setGamesWon(getCountWins1());
+       player1.setGamesWon(getCountLosses1());
+       player2.setGamesWon(getCountWins2());
+       player2.setGamesWon(getCountLosses2());
+   }
+
+    public void setLoss(){
+
+
+    }
+
+
+
 
     //heavy code for the Chronometer
 
@@ -306,6 +359,20 @@ public class Game {
 
             chrom2.start();
         }
+    }
+    public void aiTrigger(Chronometer chrom2f){
+        this.chrom2 = chrom2f;
+        if (!activity2&&elapsedTime2==0) {
+
+
+            chrom2.setBase(SystemClock.elapsedRealtime());
+            chrom2.start();
+
+        } else {
+
+            chrom2.start();
+        }
+
     }
 
 
@@ -393,4 +460,36 @@ public class Game {
         chrom2.stop();
 
     }
+
+public void getDataBase(Context context) {
+
+
+        Statistics stats = new Statistics(context);
+        stats.open();
+        // stats.createEntry(getPlayer(winner));
+/*
+    stats.createEntry(getPlayer(player1.getPlayerName()));
+    stats.createEntry(getPlayer(player2.getPlayerName()));
+*/
+        stats.createEntry(getPlayer1());
+        stats.createEntry(getPlayer2());
+
+        stats.close();
+    }
+    public void getDataBaseUpdate(Context context) {
+
+
+        Statistics stats = new Statistics(context);
+        stats.open();
+        // stats.createEntry(getPlayer(winner));
+/*
+    stats.createEntry(getPlayer(player1.getPlayerName()));
+    stats.createEntry(getPlayer(player2.getPlayerName()));
+*/
+        stats.updateEntry(getPlayer1());
+        stats.updateEntry(getPlayer2());
+
+        stats.close();
+    }
+
 }

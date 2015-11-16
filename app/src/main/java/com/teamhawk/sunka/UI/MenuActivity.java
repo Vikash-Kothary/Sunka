@@ -17,6 +17,9 @@ public class MenuActivity extends AppCompatActivity {
                     .add(R.id.fragment_container, new MenuFragment()).commit();
 
         }
+
+
+
     }
 
 }

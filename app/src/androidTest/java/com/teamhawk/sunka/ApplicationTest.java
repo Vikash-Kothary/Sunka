@@ -108,6 +108,104 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
                 game.getBoard().get(8).getBallCount());
     }
 
+    @Test
+    public void testCapture() {
+        Game game = new Game(new Board(new Player("Mahesh"), new Player("George")));
+        //make player 1's turn
+        for(int i=1; i<8; i++){
+            game.turn(game.getBoard().get(i));
+        }
+        game.turn(game.getBoard().get(0));
+
+        game.turn(game.getBoard().get(6));
+        game.turn(game.getBoard().get(9));
+        game.turn(game.getBoard().get(7));
+        game.turn(game.getBoard().get(9));
+        game.turn(game.getBoard().get(6));
+
+
+        assertEquals("The capture has not been achieved", 0, game.getBoard().get(15).getBallCount());
+    }
+
+    @Test
+    public void testPlayer1FirstTurn() {
+        Game game = new Game(new Board(new Player("Mahesh"), new Player("George")));
+        //make player 1's turn
+        for(int i=1; i<8; i++){
+            game.turn(game.getBoard().get(i));
+        }
+        game.turn(game.getBoard().get(0));
+
+        assertEquals("Player 1 has not got their first turn", true, game.getTurn());
+    }
+
+    @Test
+    public void testPlayer2FirstTurn() {
+        Game game = new Game(new Board(new Player("Mahesh"), new Player("George")));
+        //make player 2's turn
+        for(int i=15; i>7; i--){
+            game.turn(game.getBoard().get(i));
+        }
+
+        assertEquals("Player 2 has not got their first turn", false, game.getTurn());
+    }
+
+    @Test
+    public void testRepeatTurnForOponnentEmptySlotsForPlayer1() {
+        Game game = new Game(new Board(new Player("Mahesh"), new AIPlayer()));
+        for(int i=0; i<16; i++){
+            game.getBoard().get(i).setBallCount(0);
+        }
+        game.getBoard().get(1).setBallCount(1);
+        for(int i=1; i<8; i++){
+            game.turn(game.getBoard().get(i));
+        }
+
+        assertEquals("Player 1 has not had continuous turns while Player 2's slots are empty",
+                1, game.getBoard().get(7));
+    }
+
+    @Test
+    public void testRepeatTurnForOponnentEmptySlotsForPlayer2() {
+        Game game = new Game(new Board(new Player("Mahesh"), new AIPlayer()));
+        for(int i=0; i<16; i++){
+            game.getBoard().get(i).setBallCount(0);
+        }
+        game.getBoard().get(15).setBallCount(1);
+        for(int i=15; i>8; i--){
+            game.turn(game.getBoard().get(i));
+        }
+
+        assertEquals("Player 2 has not had continuous turns while Player 1's slots are empty",
+                1, game.getBoard().get(8));
+    }
+
+    @Test
+    public void testTwoPlayersCanStartSameTime() {
+        Game game = new Game(new Board(new Player("Mahesh"), new Player("George")));
+        game.turn(game.getBoard().get(1));
+        game.turn(game.getBoard().get(15));
+        game.turn(game.getBoard().get(2));
+        game.turn(game.getBoard().get(14));
+
+        assertEquals("Two players are not able to start the game simultaneously", true,
+                (game.getBoard().get(2).getBallCount() == 8) &&
+                        (game.getBoard().get(14).getBallCount() == 8));
+    }
+
+    @Test
+    public void testGameWon() {
+        Game game = new Game(new Board(new Player("Mahesh"), new AIPlayer()));
+        for(int i=0; i<16; i++){
+            game.getBoard().get(i).setBallCount(0);
+        }
+        game.getBoard().get(7).setBallCount(1);
+        game.turn(game.getBoard().get(7));
+
+
+        assertEquals("Winning condition has not been met", 1, game.getPlayer1Shells());
+    }
+
     // Come Back To This
 //    @Test
 //    public void testChangingOfTurn(){

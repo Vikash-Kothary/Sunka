@@ -67,6 +67,7 @@ public class Statistics {
     }
 
     public Statistics(Context context){
+
         mContext = context;
     }
 
@@ -80,16 +81,24 @@ public class Statistics {
         mHandler.close();
     }
 
-    public long createEntry(Player player){
+    public void createEntry(Player player){
         ContentValues cv = new ContentValues();
         cv.put(KEY_PLAYERNAME, player.getPlayerName());
+
+        System.out.println("name created"+player.getPlayerName());
         cv.put(KEY_WIN, player.getGamesWon());
         cv.put(KEY_LOSE, player.getGamesLost());
         cv.put(KEY_DRAW, player.getGamesDrawn());
         cv.put(KEY_HS, player.getHighScore());
         cv.put(KEY_AT, player.getAverageMoveTime());
         cv.put(KEY_ATT, player.getAverageGameTime());
-        return mDatabase.insert(DATABASE_TABLE, null, cv);
+
+         mDatabase = mHandler.getWritableDatabase();
+
+         mDatabase.insert(DATABASE_TABLE, null, cv);
+System.out.println(player.getPlayerName());
+        mDatabase.close();
+
     }
 
     public Player[] getEntries() {

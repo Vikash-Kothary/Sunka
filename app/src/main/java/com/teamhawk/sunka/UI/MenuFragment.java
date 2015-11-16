@@ -63,9 +63,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                         .commit();
                 break;
             case statistics_button:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new StatisticsFragment()).addToBackStack(null)
-                                .commit();
+                Intent intentF = new Intent(getActivity(), StatisticsFragment.class);
+                startActivity(intentF);
                 break;
         }
     }

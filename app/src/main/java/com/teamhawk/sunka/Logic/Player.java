@@ -15,6 +15,7 @@ public class Player {
     private int averageGameTimeInSeconds;
     private int movesTaken;
 
+
     private int buttonClicked;
 
 
@@ -30,14 +31,14 @@ public class Player {
     }
 
 
-
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
     public String getPlayerName() {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
+
 
     public int getGamesPlayed() {
         return gamesWon + gamesLost + gamesDrawn;
